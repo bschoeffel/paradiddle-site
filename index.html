@@ -354,54 +354,77 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
 <script>
 (function () {
   var root = document.documentElement;
-  if (!root.classList.contains('pd-intro')) return;
-  try { sessionStorage.setItem('pd-intro', '1'); } catch (e) {}
   var row = document.querySelector('.hits');
-  var hits = row ? row.querySelectorAll('.hit') : [];
+  if (!row) return;
+  var hits = row.querySelectorAll('.hit');
   var texts = [].slice.call(document.querySelectorAll('.hero h1 > span, .hero .lede, .hits-explain'));
+  var acc = [0, 4], busy = false;
+  var canAnimate = !!Element.prototype.animate;
+  try { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) canAnimate = false; } catch (e) {}
+
   function reveal() {
+    if (!root.classList.contains('pd-intro')) return;
     root.classList.remove('pd-intro');
     texts.forEach(function (t, i) { t.style.transitionDelay = (i * 0.18) + 's'; });
-    [].forEach.call(hits, function (h) { h.style.transform = ''; h.style.opacity = ''; });
+    [].forEach.call(hits, function (h) { h.style.opacity = ''; });
     setTimeout(function () { texts.forEach(function (t) { t.style.transitionDelay = ''; }); }, 2000);
   }
-  if (hits.length !== 8) { reveal(); return; }
-  var D = hits[0].offsetWidth, B = Math.round(D * 0.34);
-  var ball = document.createElement('b'); ball.className = 'pd-ball'; ball.style.width = ball.style.height = B + 'px';
-  row.appendChild(ball);
-  var acc = [0, 4];
-  var top0 = hits[0].offsetTop;
-  function cx(i) { return hits[i].offsetLeft + D / 2 - B / 2; }
-  var ground = top0 - B + 2;
-  function at(x, y, sx, sy) { return 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + (sx || 1) + ',' + (sy || 1) + ')'; }
-  function land(i) {
-    var h = hits[i], big = acc.indexOf(i) > -1;
-    h.style.opacity = '1';
-    h.animate([{ transform: 'scale(0)' }, { transform: big ? 'scale(1.18,.78)' : 'scale(1.1,.86)', offset: .55 }, { transform: 'scale(1)' }], { duration: big ? 420 : 340, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'forwards' });
-    return ball.animate([{ transform: at(cx(i), ground, 1.4, .6) }, { transform: at(cx(i), ground) }], { duration: 120, fill: 'forwards' }).finished;
-  }
-  function jump(x0, y0, x1, h, dur, drop) {
-    var kf = [];
-    for (var k = 0; k <= 16; k++) {
-      var t = k / 16, x = x0 + (x1 - x0) * t;
-      var y = drop ? y0 + (ground - y0) * t * t : ground - 4 * h * t * (1 - t);
-      kf.push({ transform: at(x, y) });
+
+  function play(intro) {
+    if (busy || hits.length !== 8 || !canAnimate) { reveal(); return; }
+    busy = true;
+    var D = hits[0].offsetWidth, B = Math.round(D * 0.34);
+    var ball = document.createElement('b'); ball.className = 'pd-ball'; ball.style.width = ball.style.height = B + 'px';
+    row.appendChild(ball);
+    var ground = hits[0].offsetTop - B + 2;
+    function cx(i) { return hits[i].offsetLeft + D / 2 - B / 2; }
+    function at(x, y, sx, sy) { return 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + (sx || 1) + ',' + (sy || 1) + ')'; }
+    function land(i) {
+      var h = hits[i], big = acc.indexOf(i) > -1;
+      if (intro) {
+        h.style.opacity = '1';
+        h.animate([{ transform: 'scale(0)' }, { transform: big ? 'scale(1.18,.78)' : 'scale(1.1,.86)', offset: .55 }, { transform: 'scale(1)' }], { duration: big ? 420 : 340, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'forwards' });
+      } else {
+        h.animate([{ transform: 'scale(1)' }, { transform: big ? 'scale(1.16,.8)' : 'scale(1.08,.88)', offset: .4 }, { transform: 'scale(1)' }], { duration: big ? 360 : 280, easing: 'ease-out' });
+      }
+      return ball.animate([{ transform: at(cx(i), ground, 1.4, .6) }, { transform: at(cx(i), ground) }], { duration: 120, fill: 'forwards' }).finished;
     }
-    return ball.animate(kf, { duration: dur, easing: 'linear', fill: 'forwards' }).finished;
+    function jump(x0, y0, x1, h, dur, drop) {
+      var kf = [];
+      for (var k = 0; k <= 16; k++) {
+        var t = k / 16, x = x0 + (x1 - x0) * t;
+        var y = drop ? y0 + (ground - y0) * t * t : ground - 4 * h * t * (1 - t);
+        kf.push({ transform: at(x, y) });
+      }
+      return ball.animate(kf, { duration: dur, easing: 'linear', fill: 'forwards' }).finished;
+    }
+    function end() { ball.remove(); busy = false; reveal(); }
+    var p = jump(cx(0) - D * 1.2, ground - D * 3.2, cx(0), 0, 650, true).then(function () { return land(0); });
+    for (var i = 1; i < 8; i++) {
+      (function (i) {
+        p = p.then(function () {
+          var big = acc.indexOf(i) > -1;
+          return jump(cx(i - 1), ground, cx(i), big ? D * 1.9 : D * 1.05, big ? 560 : 400).then(function () { return land(i); });
+        });
+      })(i);
+    }
+    p.then(function () {
+      return ball.animate([{ transform: at(cx(7), ground) }, { transform: at(cx(7) + D * 1.6, ground - D * 2.4, .3, .3), opacity: 0 }], { duration: 480, easing: 'ease-out', fill: 'forwards' }).finished;
+    }).then(end, end);
+    setTimeout(function () { if (busy) end(); }, 9000);
   }
-  var p = jump(cx(0) - D * 1.2, ground - D * 3.2, cx(0), 0, 650, true).then(function () { return land(0); });
-  for (var i = 1; i < 8; i++) {
-    (function (i) {
-      p = p.then(function () {
-        var big = acc.indexOf(i) > -1;
-        return jump(cx(i - 1), ground, cx(i), big ? D * 1.9 : D * 1.05, big ? 560 : 400).then(function () { return land(i); });
-      });
-    })(i);
+
+  if (root.classList.contains('pd-intro')) {
+    try { sessionStorage.setItem('pd-intro', '1'); } catch (e) {}
+    play(true);
   }
-  p.then(function () {
-    return ball.animate([{ transform: at(cx(7), ground) }, { transform: at(cx(7) + D * 1.6, ground - D * 2.4, .3, .3), opacity: 0 }], { duration: 480, easing: 'ease-out', fill: 'forwards' }).finished;
-  }).then(function () { ball.remove(); reveal(); }).catch(function () { ball.remove(); reveal(); });
-  setTimeout(function () { if (root.classList.contains('pd-intro')) { ball.remove(); reveal(); } }, 9000);
+  if (canAnimate) {
+    row.setAttribute('tabindex', '0');
+    row.setAttribute('title', 'Rejouer le paradiddle');
+    row.style.cursor = 'pointer';
+    row.addEventListener('click', function () { play(false); });
+    row.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(false); } });
+  }
 })();
 </script>
 </body>
