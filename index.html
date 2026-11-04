@@ -353,6 +353,19 @@ section.band { padding-block: 64px; }
 .before .label, .refs .label { margin-right: 10px; color: var(--ink); }
 .method-band { background: var(--paper-2); }
 .method .k { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-ink); }
+
+/* Benchmark appliqué (nov. 2026) */
+.hero .promise { font-size: clamp(19px, 1.8vw, 22px); line-height: 1.35; font-weight: 600; margin-top: 20px; max-width: 34ch; }
+.hero .promise + .sub { margin-top: 12px; }
+.w-client { font: 500 13px var(--mono); color: var(--ink); text-transform: lowercase; margin-top: 4px; }
+.w-client span { color: var(--muted); }
+.work h3 { font-size: 22px; line-height: 1.2; }
+.work > p:last-child { color: var(--muted); }
+.works { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.work { min-width: 0; align-content: start; }
+.work .visual { width: 100%; }
+@media (max-width: 860px) { .works { grid-template-columns: minmax(0, 1fr); } }
+.method .livre { font-size: 14px; font-weight: 600; padding-top: 10px; border-top: 1px solid var(--line); margin-top: 4px; }
 </style>
 
 </head>
@@ -366,10 +379,8 @@ section.band { padding-block: 64px; }
         <span class="wm-st" aria-hidden="true"><i>R</i><span>L</span><span>R</span><span>R</span><i>L</i><span>R</span><span>L</span><span>L</span></span>
       </a>
       <div class="navlinks">
-        <a href="#expertises">Expertises</a>
-        <a href="#facons">Travailler ensemble</a>
         <a href="#realisations">Réalisations</a>
-        <a href="#methode">Méthode</a>
+        <a href="#expertises">Studio</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -381,6 +392,7 @@ section.band { padding-block: 64px; }
     <div class="wrap hero-grid">
       <div>
         <h1 id="hero-title" class="h1-xp"><span class="big">20 ans</span> de stratégie, de tactique et d'<em>opérations</em>.</h1>
+        <p class="promise">Paradiddle conçoit et fabrique des organisations, des produits, des lieux et des marques.</p>
         <p class="sub">Tout bouge : marchés, équipes, outils. Ce qui fait tenir un projet, ce sont des fondations solides. Le studio pose la stratégie, organise la tactique et fabrique jusqu'au bout, sur la finance, le business et la tech.</p>
         <div class="cta-row">
           <a class="btn primary" href="#facons">Travailler ensemble</a>
@@ -407,6 +419,29 @@ section.band { padding-block: 64px; }
         <div class="score-controls">
           <button class="btn primary" id="play" type="button" aria-pressed="false">▶ Écouter le paradiddle</button>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="realisations" aria-labelledby="real-title" style="padding-top: 24px;">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Réalisations</p>
+        <h2 id="real-title">Ce que le studio a conçu et fabriqué.</h2>
+      </div>
+      <div class="works">
+        <article class="work">
+          <div class="visual v1" aria-hidden="true"><span>Maison Saint O'</span></div>
+          <p class="w-client">maison saint o' <span>· pour vous + lieu</span></p>
+          <h3>Un lieu, de la vision au chantier</h3>
+          <p>Un accompagnement à 360° : de la vision du lieu jusqu'à sa réalisation.</p>
+        </article>
+        <article class="work">
+          <div class="visual v2" aria-hidden="true"><span>Mes Proches</span></div>
+          <p class="w-client">paradiddle <span>· par nous + app</span></p>
+          <h3>Mes Proches, l'app des anniversaires</h3>
+          <p>Une app iOS pour ne plus oublier les anniversaires et les fêtes de ses proches. Imaginée, dessinée et développée par le studio : la méthode proposée aux clients, appliquée d'abord à soi.</p>
+        </article>
       </div>
     </div>
   </section>
@@ -451,6 +486,7 @@ section.band { padding-block: 64px; }
       <div class="sec-head">
         <p class="label">Travailler avec le studio</p>
         <h2 id="facons-title">Trois façons de jouer ensemble.</h2>
+        <p>Celui qui conçoit est celui qui fabrique : un seul interlocuteur, du premier appel au lancement.</p>
       </div>
       <div class="offers">
         <article class="offer">
@@ -508,30 +544,7 @@ section.band { padding-block: 64px; }
               <p class="deliv">Conçue, dessinée et développée par le studio.</p>
             </article>
           </div>
-          <p class="price">Ce qu'on apprend ici sert aux projets clients.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="realisations" aria-labelledby="real-title" style="padding-top: 24px;">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Réalisations</p>
-        <h2 id="real-title">Ce que le studio a conçu et fabriqué.</h2>
-      </div>
-      <div class="works">
-        <article class="work">
-          <div class="visual v1" aria-hidden="true"><span>Maison Saint O'</span></div>
-          <div class="tags"><span class="tag">Pour vous + Lieu</span><span class="label">Projet 360°</span></div>
-          <h3>Maison Saint O'</h3>
-          <p>Un accompagnement à 360° : de la vision du lieu jusqu'à sa réalisation.</p>
-        </article>
-        <article class="work">
-          <div class="visual v2" aria-hidden="true"><span>Mes Proches</span></div>
-          <div class="tags"><span class="tag alt">Par nous + App</span><span class="label">Application iOS</span></div>
-          <h3>Mes Proches</h3>
-          <p>Une app pour ne plus oublier les anniversaires et les fêtes de ses proches. Imaginée, dessinée et développée par le studio.</p>
+          <p class="price">Nos produits sont notre meilleure preuve : ce qu'on y apprend sert aux projets clients.</p>
         </article>
       </div>
     </div>
@@ -588,7 +601,7 @@ section.band { padding-block: 64px; }
       <div class="sec-head">
         <p class="label">Le nom, la méthode</p>
         <h2 id="methode-title">Deux mains, un seul tempo.</h2>
-        <p>Le paradiddle est le premier exercice qu'on apprend à la batterie : les deux mains alternent sur un même tempo, aucune ne domine. C'est aussi la façon dont avance chaque projet, en trois temps. On peut s'arrêter à la fin de chacun.</p>
+        <p>Le paradiddle est le premier exercice qu'on apprend à la batterie : les deux mains alternent sur un même tempo, aucune ne domine. C'est aussi la façon dont avance chaque projet : trois formules, que l'on peut prendre une par une.</p>
       </div>
       <ol class="method">
         <li>
@@ -597,6 +610,7 @@ section.band { padding-block: 64px; }
           <h3>Le décompte</h3>
           <p class="dur">1 à 2 semaines</p>
           <p>On cadre le problème, l'ambition, les contraintes. Vous repartez avec une feuille de route claire, même si l'on ne continue pas ensemble.</p>
+          <p class="livre">Livré : une feuille de route, un budget, un calendrier.</p>
         </li>
         <li>
           <span class="step">2</span>
@@ -604,6 +618,7 @@ section.band { padding-block: 64px; }
           <h3>La répétition</h3>
           <p class="dur">quelques semaines</p>
           <p>On prototype et on teste : une maquette, un pilote, une première version. On corrige avant d'investir lourd.</p>
+          <p class="livre">Livré : un prototype testé, en conditions réelles.</p>
         </li>
         <li>
           <span class="step">3</span>
@@ -611,6 +626,7 @@ section.band { padding-block: 64px; }
           <h3>Le live</h3>
           <p class="dur">jusqu'au lancement, et après</p>
           <p>On construit, on lance et on pilote. Le studio reste présent le temps que le projet tienne seul.</p>
+          <p class="livre">Livré : le projet lancé, et un suivi jusqu'à ce qu'il tourne.</p>
         </li>
       </ol>
     </div>
