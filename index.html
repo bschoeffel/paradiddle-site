@@ -138,6 +138,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .foot-logo .wm { font-size: 44px; }
 .foot-logo .wm-rule { height: 2px; }
 .foot-logo .wm-st { font-size: 13px; }
+
+/* Ouverture façon manifeste */
+.hero h1.manifesto { font-size: clamp(30px, 4.2vw, 54px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 400; display: grid; gap: .45em; max-width: 24ch; }
+.hero h1.manifesto .m1 { font-weight: 800; }
 </style>
 </head>
 <body>
@@ -160,8 +164,12 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 <main id="top">
   <div class="wrap">
     <section class="hero" aria-labelledby="hero-title">
-      <h1 id="hero-title">Paradiddle conçoit et fabrique des <b>organisations</b>, des <b>produits</b>, des <b>lieux</b> et des <em>marques</em>.</h1>
-      <p class="lede">Un studio de création à Lille, fondé par Benoît Schoeffel. Vingt ans de stratégie, de tactique et d'opérations, sur la finance, le business et la tech.</p>
+      <h1 id="hero-title" class="manifesto">
+        <span class="m1">Paradiddle est un studio de création.</span>
+        <span>Notre approche est stratégique, concrète et artisanale.</span>
+        <span>Nous fabriquons des choses utiles, qui <em>tiennent</em>.</span>
+      </h1>
+      <p class="lede">Fondé à Lille par Benoît Schoeffel. Vingt ans de stratégie, de tactique et d'opérations, sur la finance, le business et la tech.</p>
     </section>
 
     <div class="hits" role="img" aria-label="Le paradiddle : droite, gauche, droite, droite, gauche, droite, gauche, gauche.">
@@ -174,7 +182,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
     <section class="s" id="studio" aria-labelledby="studio-title" style="margin-top: 72px;">
       <div class="s-head"><span class="mono num">01</span><h2 id="studio-title">Le studio</h2></div>
       <div class="s-body">
-        <p class="intro"><b>Paradiddle est un studio de création.</b> Il décide où aller, puis il fabrique ce qu'il faut pour y arriver. Celui qui conçoit est celui qui fabrique.</p>
+        <p class="intro">Le studio décide où aller, puis il fabrique ce qu'il faut pour y arriver. <b>Celui qui conçoit est celui qui fabrique.</b></p>
         <div class="caps">
           <div><h3>Finance</h3><ul><li>Modèle économique</li><li>Levée de fonds</li><li>Pilotage et marges</li><li>M&amp;A</li></ul></div>
           <div><h3>Business</h3><ul><li>Positionnement et offre</li><li>Marque et naming</li><li>Organisation commerciale</li><li>Lieux et espaces</li></ul></div>
