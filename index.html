@@ -341,6 +341,18 @@ section.band { padding-block: 64px; }
 :root { --muted: #474747; }
 .why .label, .contact .label { opacity: 1; color: #E6D9E5; }
 .timeline li.now .when { color: var(--accent-ink); }
+
+/* Page raccourcie (nov. 2026) */
+.offer .ex-label { font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+.ex-list { display: grid; gap: 0; }
+.ex-list .ex { border-top: 1px solid var(--line); padding: 14px 0; gap: 4px; }
+.ex-list .ex h4 { font-size: 18px; }
+.ex-list .ex .deliv { border-top: 0; padding-top: 2px; font-size: 14px; }
+.before, .refs { margin-top: 28px; color: var(--muted); font-size: 15px; max-width: 80ch; }
+.refs { margin-top: 10px; }
+.before .label, .refs .label { margin-right: 10px; color: var(--ink); }
+.method-band { background: var(--paper-2); }
+.method .k { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-ink); }
 </style>
 
 </head>
@@ -451,101 +463,59 @@ section.band { padding-block: 64px; }
         <article class="offer">
           <p class="tag">Pour vous</p>
           <h3>Votre projet, de bout en bout</h3>
-          <p class="intro">Vous avez une idée ou un problème. Le studio la conçoit et la fabrique avec vous.</p>
-          <ul>
-            <li><b>Une organisation</b><span>Structurer une activité pour qu'elle passe à l'échelle : offre, équipes, process, outils.</span></li>
-            <li><b>Un produit numérique</b><span>Une app ou un outil métier, de la maquette à la mise en ligne.</span></li>
-            <li><b>Un lieu</b><span>Un espace aménagé, du concept au chantier livré.</span></li>
-            <li><b>Une marque</b><span>Le positionnement, le nom, l'identité et le lancement.</span></li>
-          </ul>
+          <p class="intro">Vous avez une idée ou un problème : une organisation, un produit numérique, un lieu, une marque. Le studio la conçoit et la fabrique avec vous.</p>
+          <p class="ex-label">Par exemple</p>
+          <div class="ex-list">
+            <article class="ex">
+              <h4>Préparer une levée de fonds</h4>
+              <p class="sit">Une PME veut lever 2 M€ sans modèle financier ni récit pour les investisseurs.</p>
+              <p class="deliv">Livré : un dossier prêt à présenter, en 6 à 8 semaines.</p>
+            </article>
+            <article class="ex">
+              <h4>Structurer une équipe commerciale</h4>
+              <p class="sit">Un dirigeant vend encore tout lui-même.</p>
+              <p class="deliv">Livré : une équipe qui tourne et un tableau de bord, en 3 mois.</p>
+            </article>
+            <article class="ex">
+              <h4>Créer l'app d'un réseau</h4>
+              <p class="sit">Un réseau de magasins veut garder le lien avec ses clients.</p>
+              <p class="deliv">Livré : une app sur l'App Store et un premier pilote.</p>
+            </article>
+            <article class="ex">
+              <h4>Ouvrir un nouvel espace</h4>
+              <p class="sit">Un showroom ou des bureaux qui racontent la marque.</p>
+              <p class="deliv">Livré : un lieu ouvert, dans le budget.</p>
+            </article>
+          </div>
           <p class="price">Au projet, par étape.</p>
         </article>
         <article class="offer">
           <p class="tag">Avec vous</p>
           <h3>Co-créer une activité</h3>
-          <p class="intro">Vous portez un projet d'entreprise. Le studio s'engage à vos côtés, comme associé opérationnel.</p>
-          <ul>
-            <li><b>Du concept au marché</b><span>Lancement de structures, jusqu'au go-to-market.</span></li>
-            <li><b>Exploration</b><span>Nouveaux marchés : musique, tech, services.</span></li>
-            <li><b>Engagement long</b><span>Présence aux côtés des équipes après le lancement.</span></li>
-          </ul>
+          <p class="intro">Vous portez un projet d'entreprise. Le studio s'engage à vos côtés comme associé opérationnel, du concept au marché, et reste après le lancement.</p>
+          <p class="ex-label">Par exemple</p>
+          <div class="ex-list">
+            <article class="ex">
+              <h4>Lancer une activité avec un expert</h4>
+              <p class="sit">Un artisan ou un technicien a un savoir-faire rare, mais pas d'associé pour en faire une entreprise.</p>
+              <p class="deliv">Marque, offre, premiers clients, organisation.</p>
+            </article>
+          </div>
           <p class="price">Rémunération possible en parts ou en partage de revenus.</p>
         </article>
         <article class="offer">
           <p class="tag alt">Par nous</p>
           <h3>Les produits du studio</h3>
           <p class="intro">Entre deux projets clients, le studio crée et publie ses propres produits.</p>
-          <ul>
-            <li><b>Mes Proches</b><span>App iOS pour les anniversaires et les fêtes de ses proches.</span></li>
-          </ul>
+          <p class="ex-label">Par exemple</p>
+          <div class="ex-list">
+            <article class="ex">
+              <h4>Mes Proches</h4>
+              <p class="sit">Une app iOS pour ne plus oublier les anniversaires et les fêtes de ses proches.</p>
+              <p class="deliv">Conçue, dessinée et développée par le studio.</p>
+            </article>
+          </div>
           <p class="price">Ce qu'on apprend ici sert aux projets clients.</p>
-        </article>
-      </div>
-
-      <div class="examples-head">
-        <p class="label">Exemples de missions</p>
-        <h3>À quoi ça ressemble, concrètement.</h3>
-      </div>
-      <div class="examples">
-        <article class="ex">
-          <p class="tag">Pour vous · Finance</p>
-          <h4>Préparer une levée de fonds</h4>
-          <p class="sit">Une PME en croissance veut lever 2 M€ mais n'a ni modèle financier ni récit pour les investisseurs.</p>
-          <dl>
-            <div><dt>D · Concevoir</dt><dd>Business plan, scénarios, montant et usage des fonds.</dd></div>
-            <div><dt>G · Fabriquer</dt><dd>Modèle financier, deck, data room, préparation des rendez-vous.</dd></div>
-          </dl>
-          <p class="deliv">Livré : un dossier prêt à présenter, en 6 à 8 semaines.</p>
-        </article>
-        <article class="ex">
-          <p class="tag">Pour vous · Business</p>
-          <h4>Structurer une équipe commerciale</h4>
-          <p class="sit">Un dirigeant vend encore tout lui-même et veut que la croissance ne dépende plus de lui.</p>
-          <dl>
-            <div><dt>D · Concevoir</dt><dd>Cibles, offre, organisation commerciale, objectifs.</dd></div>
-            <div><dt>G · Fabriquer</dt><dd>Process de vente, CRM, recrutement, rituels de pilotage.</dd></div>
-          </dl>
-          <p class="deliv">Livré : une équipe qui tourne et un tableau de bord, en 3 mois.</p>
-        </article>
-        <article class="ex">
-          <p class="tag">Pour vous · Tech</p>
-          <h4>Créer l'app d'un réseau</h4>
-          <p class="sit">Un réseau de points de vente veut garder le lien avec ses clients entre deux visites.</p>
-          <dl>
-            <div><dt>D · Concevoir</dt><dd>Usages clés, parcours, modèle de rétention.</dd></div>
-            <div><dt>G · Fabriquer</dt><dd>Maquettes, développement, test en magasin, publication.</dd></div>
-          </dl>
-          <p class="deliv">Livré : une app publiée sur l'App Store et un premier pilote.</p>
-        </article>
-        <article class="ex">
-          <p class="tag">Pour vous · Lieu</p>
-          <h4>Ouvrir un nouvel espace</h4>
-          <p class="sit">Une entreprise ouvre un showroom ou de nouveaux bureaux et veut un lieu qui raconte sa marque.</p>
-          <dl>
-            <div><dt>D · Concevoir</dt><dd>Usages, concept, budget, planning.</dd></div>
-            <div><dt>G · Fabriquer</dt><dd>Plans, choix des artisans, suivi de chantier, ouverture.</dd></div>
-          </dl>
-          <p class="deliv">Livré : un lieu ouvert, dans le budget.</p>
-        </article>
-        <article class="ex">
-          <p class="tag">Avec vous</p>
-          <h4>Lancer une activité avec un expert</h4>
-          <p class="sit">Un artisan ou un technicien a un savoir-faire rare mais pas d'associé pour en faire une entreprise.</p>
-          <dl>
-            <div><dt>D · Concevoir</dt><dd>Marque, offre, modèle économique.</dd></div>
-            <div><dt>G · Fabriquer</dt><dd>Lancement, premiers clients, organisation.</dd></div>
-          </dl>
-          <p class="deliv">Le studio entre au capital ou partage les revenus.</p>
-        </article>
-        <article class="ex">
-          <p class="tag alt">Par nous</p>
-          <h4>Mes Proches</h4>
-          <p class="sit">Un besoin personnel : ne plus oublier les anniversaires et les fêtes de ses proches.</p>
-          <dl>
-            <div><dt>D · Concevoir</dt><dd>Usage, parcours, design de l'app.</dd></div>
-            <div><dt>G · Fabriquer</dt><dd>Développement iOS, tests, publication.</dd></div>
-          </dl>
-          <p class="deliv">Le terrain d'essai des méthodes du studio.</p>
         </article>
       </div>
     </div>
@@ -577,18 +547,18 @@ section.band { padding-block: 64px; }
   <section class="band" id="parcours" aria-labelledby="parcours-title" style="padding-top: 24px;">
     <div class="wrap">
       <div class="sec-head">
-        <p class="label">Projets menés de bout en bout</p>
-        <h2 id="parcours-title">Avant le studio, des entreprises construites de l'intérieur.</h2>
-        <p>Quatre situations, la même partition : décider, puis faire tenir. Les résultats sont ceux obtenus en poste, comme dirigeant ou cofondateur.</p>
+        <p class="label">Parcours · Paris → Vancouver → Johannesburg → Lille</p>
+        <h2 id="parcours-title">Vingt ans de terrain sous chaque projet.</h2>
+        <p>Avant le studio, des entreprises construites de l'intérieur, comme dirigeant ou cofondateur.</p>
       </div>
       <div class="cases">
         <article class="case">
           <header class="case-head">
             <span class="when">2014 – 2022 · Croissance</span>
             <h3>Projexion</h3>
-            <p class="role">Directeur commercial &amp; opérations · 8 ans · comité de direction</p>
+            <p class="role">Directeur commercial &amp; opérations, comité de direction</p>
           </header>
-          <div class="case-result"><strong>×4,6</strong><span>de 1,2 M€ à 5,5 M€ de chiffre d'affaires, sans levée de fonds, avec 33 % de marge</span></div>
+          <div class="case-result"><strong>×4,6</strong><span>de 1,2 M€ à 5,5 M€ de chiffre d'affaires, sans levée de fonds</span></div>
         </article>
         <article class="case">
           <header class="case-head">
@@ -596,7 +566,7 @@ section.band { padding-block: 64px; }
             <h3>Klareo</h3>
             <p class="role">Directeur commercial &amp; marketing</p>
           </header>
-          <div class="case-result"><strong>3 M€</strong><span>levés, 600 k€ de pipe commercial et une part de marché supérieure à 66 % en grande distribution</span></div>
+          <div class="case-result"><strong>3 M€</strong><span>levés et plus de 66 % de part de marché en grande distribution</span></div>
         </article>
         <article class="case">
           <header class="case-head">
@@ -604,7 +574,7 @@ section.band { padding-block: 64px; }
             <h3>Willing</h3>
             <p class="role">Directeur Lille</p>
           </header>
-          <div class="case-result"><strong>−45 % → +35 %</strong><span>de marge en 5 mois, et un chiffre d'affaires passé de 1 M€ à 1,6 M€</span></div>
+          <div class="case-result"><strong>−45 % → +35 %</strong><span>de marge en 5 mois</span></div>
         </article>
         <article class="case">
           <header class="case-head">
@@ -615,93 +585,41 @@ section.band { padding-block: 64px; }
           <div class="case-result"><strong>5 clients</strong><span>signés en 8 mois, dont Electro Dépôt, Engie et Kiloutou</span></div>
         </article>
       </div>
+      <p class="before"><span class="label">Avant 2014</span> Sport Events International (Rugby World Cup 2007, Vancouver 2010, FIFA 2010) · DDB Canada · altima° – Accenture</p>
+      <p class="refs"><span class="label">Références</span> Leroy Merlin, Decathlon, Boulanger, E.Leclerc, Auchan, AXA, Caisse d'Épargne, Cofidis, Bonduelle, Roquette, La Redoute, Kiabi, Boralex…</p>
     </div>
   </section>
 
-  <section class="band" id="methode" aria-labelledby="methode-title" style="background: var(--paper-2);">
+  <section class="band method-band" id="methode" aria-labelledby="methode-title">
     <div class="wrap">
       <div class="sec-head">
-        <p class="label">La méthode</p>
-        <h2 id="methode-title">Un, deux, trois, quatre.</h2>
-        <p>Chaque projet suit trois temps. On peut s'arrêter à la fin de chacun.</p>
+        <p class="label">Le nom, la méthode</p>
+        <h2 id="methode-title">Deux mains, un seul tempo.</h2>
+        <p>Le paradiddle est le premier exercice qu'on apprend à la batterie : les deux mains alternent sur un même tempo, aucune ne domine. C'est aussi la façon dont avance chaque projet, en trois temps. On peut s'arrêter à la fin de chacun.</p>
       </div>
       <ol class="method">
         <li>
           <span class="step">1</span>
+          <p class="k">Main droite · concevoir</p>
           <h3>Le décompte</h3>
           <p class="dur">1 à 2 semaines</p>
-          <p>On cadre : le problème, l'ambition, les contraintes, ce qu'on fabrique en premier. Vous repartez avec une feuille de route claire, même si l'on ne continue pas ensemble.</p>
+          <p>On cadre le problème, l'ambition, les contraintes. Vous repartez avec une feuille de route claire, même si l'on ne continue pas ensemble.</p>
         </li>
         <li>
           <span class="step">2</span>
+          <p class="k">Main gauche · fabriquer</p>
           <h3>La répétition</h3>
           <p class="dur">quelques semaines</p>
           <p>On prototype et on teste : une maquette, un pilote, une première version. On corrige avant d'investir lourd.</p>
         </li>
         <li>
           <span class="step">3</span>
+          <p class="k">Le tempo · faire tenir</p>
           <h3>Le live</h3>
           <p class="dur">jusqu'au lancement, et après</p>
           <p>On construit, on lance et on pilote. Le studio reste présent le temps que le projet tienne seul.</p>
         </li>
       </ol>
-    </div>
-  </section>
-
-  <section class="band why" id="nom" aria-labelledby="nom-title">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Le nom</p>
-        <h2 id="nom-title">Le premier exercice qu'on apprend à la batterie. Et celui qu'on travaille toute sa vie.</h2>
-        <p>Un paradiddle alterne les deux mains sur un même tempo : droite, gauche, droite, droite, puis gauche, droite, gauche, gauche. Aucune main ne domine. Dans un groupe, le batteur est la fondation : tout le monde peut improviser parce que le rythme tient.</p>
-      </div>
-      <div class="hands">
-        <div class="hand">
-          <p class="k">MAIN DROITE</p>
-          <h3>Concevoir</h3>
-          <p>Stratégie, modèle, design. Savoir où aller et à quoi ça doit ressembler.</p>
-        </div>
-        <div class="hand">
-          <p class="k">MAIN GAUCHE</p>
-          <h3>Fabriquer</h3>
-          <p>Organisation, outils, chantier, code. Ce qui transforme une idée en quelque chose qui marche.</p>
-        </div>
-        <div class="hand">
-          <p class="k">LE TEMPO</p>
-          <h3>Faire tenir</h3>
-          <p>Un rythme tenu jusqu'au lancement, et après. Un projet ne s'arrête pas à la livraison.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band" id="fondations" aria-labelledby="fond-title">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Les fondations · Paris → Vancouver → Johannesburg → Lille</p>
-        <h2 id="fond-title">Vingt ans de terrain sous chaque projet.</h2>
-        <p>De l'événementiel mondial à la direction d'entreprises, en passant par la publicité et la transformation. Chaque étape a ajouté une couche.</p>
-      </div>
-      <ol class="timeline" aria-label="Étapes du parcours" style="margin-top: 0;">
-        <li><span class="when">2007 – 2010</span><span class="what"><b>Sport Events International</b> <span>· RWC 2007, VANOC 2010, FIFA 2010</span></span></li>
-        <li><span class="when">2008 – 2010</span><span class="what"><b>DDB Canada</b> <span>· stratégie digitale et copywriting</span></span></li>
-        <li><span class="when">2011 – 2014</span><span class="what"><b>altima° – Accenture</b> <span>· senior project manager, management de la transition</span></span></li>
-        <li><span class="when">2014 – 2022</span><span class="what"><b>Projexion</b> <span>· directeur commercial et opérations, comité de direction</span></span></li>
-        <li><span class="when">2022 – 2023</span><span class="what"><b>Klareo</b> <span>· directeur commercial et marketing</span></span></li>
-        <li><span class="when">2023 – 2024</span><span class="what"><b>Willing</b> <span>· directeur Lille, retournement</span></span></li>
-        <li><span class="when">2024 – 2025</span><span class="what"><b>groove</b> <span>· cofondateur d'un cabinet de transformation</span></span></li>
-        <li class="now"><span class="when">Aujourd'hui</span><span class="what"><b>Paradiddle</b> <span>· studio de création</span></span></li>
-      </ol>
-      <div class="sectors" style="margin-top: 48px;" aria-label="Références par secteur">
-        <div class="sector"><b>Retail</b><span>Leroy Merlin, Kingfisher, Boulanger, Chronodrive, E.Leclerc, Auchan, Decathlon, Electro Dépôt</span></div>
-        <div class="sector"><b>Assurance &amp; santé</b><span>AXA, Cardif, Gan</span></div>
-        <div class="sector"><b>Banque</b><span>Caisse d'Épargne, Cofidis</span></div>
-        <div class="sector"><b>Industrie</b><span>Paul, Bonduelle, Roquette</span></div>
-        <div class="sector"><b>Énergie &amp; logiciel</b><span>Boralex, Klareo</span></div>
-        <div class="sector"><b>Mode</b><span>La Redoute, Vertbaudet, Jules, Kiabi</span></div>
-        <div class="sector"><b>Sport</b><span>FIFA 2010, VANOC 2010, Rugby World Cup 2007</span></div>
-        <div class="sector"><b>Publicité, conseil &amp; non lucratif</b><span>Accenture, Tribal DDB, Willing, Projexion, Commission canadienne du tourisme</span></div>
-      </div>
     </div>
   </section>
 
