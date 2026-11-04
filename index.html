@@ -195,6 +195,23 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .sign { flex-wrap: wrap; align-items: center; }
 .li-pill { display: inline-flex; align-items: center; padding: 5px 12px; border: 1.5px solid var(--ink); border-radius: 999px; font: 600 13px var(--sans); text-decoration: none; line-height: 1; }
 .li-pill:hover { background: var(--ink); color: #fff; }
+
+/* Intro : la balle qui joue le paradiddle */
+.intro-ov { position: fixed; inset: 0; z-index: 100; background: var(--paper); display: grid; place-items: center; cursor: pointer; }
+.intro-ov.out { animation: introOut .55s cubic-bezier(.7,0,.2,1) forwards; }
+@keyframes introOut { to { clip-path: inset(0 0 100% 0); } }
+.intro-stage { position: relative; display: grid; gap: 14px; justify-items: center; }
+.intro-row { display: grid; grid-template-columns: repeat(8, 30px); gap: 14px; position: relative; }
+.intro-hit { width: 30px; height: 30px; border-radius: 50%; border: 2.5px solid var(--ink); box-sizing: border-box; transform-origin: 50% 100%; }
+.intro-hit.on { background: var(--ink); }
+.intro-hit.acc.on { background: var(--accent); border-color: var(--accent); }
+.intro-lab { display: grid; grid-template-columns: repeat(8, 30px); gap: 14px; font: 600 11px var(--mono); text-align: center; color: var(--muted); }
+.intro-lab span.lit { color: var(--ink); }
+.intro-lab span.acc.lit { color: var(--accent-ink); }
+.intro-ball { position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--accent); will-change: transform; }
+.intro-word { font-family: var(--logo); font-weight: 900; font-size: 34px; letter-spacing: -0.025em; font-variation-settings: "SOFT" 100, "opsz" 144; opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s; margin-top: 10px; }
+.intro-word.on { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .intro-ov { display: none; } }
 </style>
 </head>
 <body>
@@ -334,5 +351,65 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 </footer>
 
 
+
+<script>
+(function () {
+  try { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; } catch (e) {}
+  try { if (sessionStorage.getItem('pd-intro')) return; sessionStorage.setItem('pd-intro', '1'); } catch (e) {}
+  if (!Element.prototype.animate) return;
+  var seq = 'RLRRLRLL'.split(''), acc = [0, 4];
+  var ov = document.createElement('div'); ov.className = 'intro-ov'; ov.setAttribute('aria-hidden', 'true');
+  var hits = seq.map(function (c, i) { return '<i class="intro-hit' + (acc.indexOf(i) > -1 ? ' acc' : '') + '"></i>'; }).join('');
+  var labs = seq.map(function (c, i) { return '<span' + (acc.indexOf(i) > -1 ? ' class="acc"' : '') + '>' + c + '</span>'; }).join('');
+  ov.innerHTML = '<div class="intro-stage"><div class="intro-row">' + hits + '<b class="intro-ball"></b></div><div class="intro-lab">' + labs + '</div><div class="intro-word">Paradiddle</div></div>';
+  document.body.appendChild(ov);
+  document.documentElement.style.overflow = 'hidden';
+  var row = ov.querySelector('.intro-row'), ball = ov.querySelector('.intro-ball');
+  var dots = ov.querySelectorAll('.intro-hit'), lab = ov.querySelectorAll('.intro-lab span'), word = ov.querySelector('.intro-word');
+  var done = false;
+  function finish() {
+    if (done) return; done = true;
+    ov.classList.add('out');
+    setTimeout(function () { ov.remove(); document.documentElement.style.overflow = ''; }, 600);
+  }
+  ov.addEventListener('click', finish);
+  function cx(i) { return dots[i].offsetLeft + 15 - 7; }
+  var ground = -2 - 14; // ball sits on top of the circle
+  var hop = 165;
+  function land(i) {
+    dots[i].classList.add('on'); lab[i].classList.add('lit');
+    var big = acc.indexOf(i) > -1;
+    dots[i].animate([{ transform: 'scale(1,1)' }, { transform: big ? 'scale(1.25,.7)' : 'scale(1.12,.82)' }, { transform: 'scale(1,1)' }], { duration: 220, easing: 'ease-out' });
+    ball.animate([{ transform: 'translate(' + cx(i) + 'px,' + ground + 'px) scale(1.35,.65)' }, { transform: 'translate(' + cx(i) + 'px,' + ground + 'px) scale(1,1)' }], { duration: 90 });
+  }
+  function jump(from, to, h, dur) {
+    var x0 = from === null ? cx(0) - 60 : cx(from), x1 = cx(to);
+    var y0 = from === null ? -110 : ground;
+    var kf = [];
+    for (var k = 0; k <= 10; k++) {
+      var t = k / 10, x = x0 + (x1 - x0) * t;
+      var y = from === null ? y0 + (ground - y0) * t * t : ground - 4 * h * t * (1 - t);
+      kf.push({ transform: 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px)' });
+    }
+    return ball.animate(kf, { duration: dur, easing: 'linear', fill: 'forwards' }).finished;
+  }
+  var p = jump(null, 0, 0, 380).then(function () { land(0); });
+  for (var i = 1; i < 8; i++) {
+    (function (i) {
+      p = p.then(function () {
+        var h = acc.indexOf(i) > -1 ? 92 : 42;
+        return jump(i - 1, i, h, acc.indexOf(i) > -1 ? hop + 70 : hop).then(function () { land(i); });
+      });
+    })(i);
+  }
+  p.then(function () {
+    return ball.animate([{ transform: 'translate(' + cx(7) + 'px,' + ground + 'px)' }, { transform: 'translate(' + (cx(7) + 70) + 'px,' + (ground - 70) + 'px) scale(.4)', opacity: 0 }], { duration: 320, easing: 'ease-out', fill: 'forwards' }).finished;
+  }).then(function () {
+    word.classList.add('on');
+    setTimeout(finish, 650);
+  }).catch(finish);
+  setTimeout(finish, 6000);
+})();
+</script>
 </body>
 </html>
