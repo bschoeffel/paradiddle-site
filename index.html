@@ -225,6 +225,10 @@ section.s { border-top: 0.5px solid #555; }
 .flow-line i { border-width: 1px; }
 .ways li, .rules li, .index td, .caps div, .flow-steps li { border-color: #E8E8E4; }
 @media (max-width: 760px) { .flow-steps { border-left: 0.5px solid #555; } .flow-steps li::before { border-width: 1px; } }
+
+/* Menu collant */
+header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.92); -webkit-backdrop-filter: saturate(1.4) blur(10px); backdrop-filter: saturate(1.4) blur(10px); }
+html { scroll-padding-top: 84px; }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
