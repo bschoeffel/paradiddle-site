@@ -400,24 +400,17 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   function snare(i) {
     if (!actx || actx.state !== 'running') return;
     var big = acc.indexOf(i) > -1, left = seqLR[i] === 'L', t = actx.currentTime;
+    var len = 0.16, buf = actx.createBuffer(1, Math.floor(actx.sampleRate * len), actx.sampleRate), d = buf.getChannelData(0);
+    for (var k = 0; k < d.length; k++) d[k] = (Math.random() * 2 - 1) * Math.pow(1 - k / d.length, 2.6);
+    var n = actx.createBufferSource(); n.buffer = buf;
+    var hp = actx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 1400;
+    var gn = actx.createGain(); gn.gain.setValueAtTime(big ? 0.55 : 0.28, t); gn.gain.exponentialRampToValueAtTime(0.001, t + len);
+    var o = actx.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(big ? 230 : 200, t); o.frequency.exponentialRampToValueAtTime(120, t + 0.09);
+    var go = actx.createGain(); go.gain.setValueAtTime(big ? 0.5 : 0.25, t); go.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
     var out = actx.createStereoPanner ? actx.createStereoPanner() : actx.createGain();
     if (out.pan) out.pan.value = left ? -0.35 : 0.35;
-    out.connect(actx.destination);
-    // le « pok » d'une balle en caoutchouc : une note qui chute vite
-    var o = actx.createOscillator(); o.type = 'sine';
-    o.frequency.setValueAtTime(big ? 720 : 600, t);
-    o.frequency.exponentialRampToValueAtTime(big ? 170 : 200, t + (big ? 0.11 : 0.08));
-    var g = actx.createGain();
-    g.gain.setValueAtTime(0.0001, t);
-    g.gain.exponentialRampToValueAtTime(big ? 0.7 : 0.45, t + 0.004);
-    g.gain.exponentialRampToValueAtTime(0.0001, t + (big ? 0.18 : 0.13));
-    o.connect(g); g.connect(out); o.start(t); o.stop(t + 0.2);
-    // un tout petit claquement au contact
-    var len = 0.012, buf = actx.createBuffer(1, Math.floor(actx.sampleRate * len), actx.sampleRate), d = buf.getChannelData(0);
-    for (var k = 0; k < d.length; k++) d[k] = (Math.random() * 2 - 1) * (1 - k / d.length);
-    var n = actx.createBufferSource(); n.buffer = buf;
-    var gn = actx.createGain(); gn.gain.value = big ? 0.18 : 0.1;
-    n.connect(gn); gn.connect(out); n.start(t);
+    n.connect(hp); hp.connect(gn); gn.connect(out); o.connect(go); go.connect(out); out.connect(actx.destination);
+    n.start(t); o.start(t); o.stop(t + 0.12);
   }
   var canAnimate = !!Element.prototype.animate;
   try { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) canAnimate = false; } catch (e) {}
