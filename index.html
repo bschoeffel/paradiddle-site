@@ -354,6 +354,12 @@ section.band { padding-block: 64px; }
 .before .label, .refs .label { margin-right: 10px; color: var(--ink); }
 .method-band { background: var(--paper-2); }
 .method .k { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--accent-ink); }
+
+/* Réalisations : colonnes égales */
+.works { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.work { min-width: 0; align-content: start; }
+.work .visual { width: 100%; }
+@media (max-width: 860px) { .works { grid-template-columns: minmax(0, 1fr); } }
 </style>
 
 </head>
@@ -370,7 +376,6 @@ section.band { padding-block: 64px; }
         <a href="#expertises">Expertises</a>
         <a href="#facons">Travailler ensemble</a>
         <a href="#realisations">Réalisations</a>
-        <a href="#methode">Méthode</a>
         <a href="#contact">Contact</a>
       </div>
     </nav>
@@ -509,85 +514,6 @@ section.band { padding-block: 64px; }
           <p>Une app pour ne plus oublier les anniversaires et les fêtes de ses proches. Imaginée, dessinée et développée par le studio.</p>
         </article>
       </div>
-    </div>
-  </section>
-
-  <section class="band" id="parcours" aria-labelledby="parcours-title" style="padding-top: 24px;">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Parcours · Paris → Vancouver → Johannesburg → Lille</p>
-        <h2 id="parcours-title">Vingt ans de terrain sous chaque projet.</h2>
-        <p>Avant le studio, des entreprises construites de l'intérieur, comme dirigeant ou cofondateur.</p>
-      </div>
-      <div class="cases">
-        <article class="case">
-          <header class="case-head">
-            <span class="when">2014 – 2022 · Croissance</span>
-            <h3>Projexion</h3>
-            <p class="role">Directeur commercial &amp; opérations, comité de direction</p>
-          </header>
-          <div class="case-result"><strong>×4,6</strong><span>de 1,2 M€ à 5,5 M€ de chiffre d'affaires, sans levée de fonds</span></div>
-        </article>
-        <article class="case">
-          <header class="case-head">
-            <span class="when">2022 – 2023 · Levée &amp; go-to-market</span>
-            <h3>Klareo</h3>
-            <p class="role">Directeur commercial &amp; marketing</p>
-          </header>
-          <div class="case-result"><strong>3 M€</strong><span>levés et plus de 66 % de part de marché en grande distribution</span></div>
-        </article>
-        <article class="case">
-          <header class="case-head">
-            <span class="when">2023 – 2024 · Retournement</span>
-            <h3>Willing</h3>
-            <p class="role">Directeur Lille</p>
-          </header>
-          <div class="case-result"><strong>−45 % → +35 %</strong><span>de marge en 5 mois</span></div>
-        </article>
-        <article class="case">
-          <header class="case-head">
-            <span class="when">2024 – 2025 · Lancement</span>
-            <h3>groove</h3>
-            <p class="role">Cofondateur d'un cabinet de transformation</p>
-          </header>
-          <div class="case-result"><strong>5 clients</strong><span>signés en 8 mois, dont Electro Dépôt, Engie et Kiloutou</span></div>
-        </article>
-      </div>
-      <p class="before"><span class="label">Avant 2014</span> Sport Events International (Rugby World Cup 2007, Vancouver 2010, FIFA 2010) · DDB Canada · altima° – Accenture</p>
-      <p class="refs"><span class="label">Références</span> Leroy Merlin, Decathlon, Boulanger, E.Leclerc, Auchan, AXA, Caisse d'Épargne, Cofidis, Bonduelle, Roquette, La Redoute, Kiabi, Boralex…</p>
-    </div>
-  </section>
-
-  <section class="band method-band" id="methode" aria-labelledby="methode-title">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Le nom, la méthode</p>
-        <h2 id="methode-title">Deux mains, un seul tempo.</h2>
-        <p>Le paradiddle est le premier exercice qu'on apprend à la batterie : les deux mains alternent sur un même tempo, aucune ne domine. C'est aussi la façon dont avance chaque projet, en trois temps. On peut s'arrêter à la fin de chacun.</p>
-      </div>
-      <ol class="method">
-        <li>
-          <span class="step">1</span>
-          <p class="k">Main droite · concevoir</p>
-          <h3>Le décompte</h3>
-          <p class="dur">1 à 2 semaines</p>
-          <p>On cadre le problème, l'ambition, les contraintes. Vous repartez avec une feuille de route claire, même si l'on ne continue pas ensemble.</p>
-        </li>
-        <li>
-          <span class="step">2</span>
-          <p class="k">Main gauche · fabriquer</p>
-          <h3>La répétition</h3>
-          <p class="dur">quelques semaines</p>
-          <p>On prototype et on teste : une maquette, un pilote, une première version. On corrige avant d'investir lourd.</p>
-        </li>
-        <li>
-          <span class="step">3</span>
-          <p class="k">Le tempo · faire tenir</p>
-          <h3>Le live</h3>
-          <p class="dur">jusqu'au lancement, et après</p>
-          <p>On construit, on lance et on pilote. Le studio reste présent le temps que le projet tienne seul.</p>
-        </li>
-      </ol>
     </div>
   </section>
 
