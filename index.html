@@ -182,6 +182,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .index td.st i { display: inline-block; font: 600 10px var(--mono); font-style: normal; padding: 2px 5px; margin-right: 3px; border: 1px solid var(--line); color: #9A9A96; border-radius: 3px; }
 .index td.st i.on { background: var(--ink); border-color: var(--ink); color: #fff; }
 @media (max-width: 700px) { .index td.st { grid-column: 2; padding-top: 4px; } }
+
+.hits-explain { max-width: 62ch; margin-top: 14px; font-size: 16px; line-height: 1.55; color: var(--muted); }
+.hits-explain b { color: var(--ink); }
 </style>
 </head>
 <body>
@@ -194,7 +197,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
       <span class="wm-st" aria-hidden="true"><i>R</i><span>L</span><span>R</span><span>R</span><i>L</i><span>R</span><span>L</span><span>L</span></span>
     </a>
     <nav aria-label="Navigation principale">
-      <a href="#studio">Studio</a>
+      <a href="#studio">Approche</a>
       <a href="#index">Projets</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -219,14 +222,13 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
     <div class="hits" role="img" aria-label="Le paradiddle : droite, gauche, droite, droite, gauche, droite, gauche, gauche.">
       <span class="hit on">R</span><span class="hit">L</span><span class="hit">R</span><span class="hit">R</span><span class="hit on">L</span><span class="hit">R</span><span class="hit">L</span><span class="hit">L</span>
     </div>
-    <div class="hits-legend mono" aria-hidden="true"><span>Main droite · concevoir</span><span>Main gauche · fabriquer</span></div>
+    <p class="hits-explain"><b>Un paradiddle</b>, c'est le premier exercice qu'on apprend à la batterie&nbsp;: les deux mains alternent sur un même tempo, R&nbsp;L&nbsp;R&nbsp;R · L&nbsp;R&nbsp;L&nbsp;L. Aucune ne domine. Main droite&nbsp;: concevoir. Main gauche&nbsp;: fabriquer. Le tempo&nbsp;: faire tenir.</p>
   </div>
 
   <div class="wrap">
     <section class="s" id="studio" aria-labelledby="studio-title" style="margin-top: 64px;">
       <div class="s-head"><span class="mono num">01</span><h2 id="studio-title">De l'idée à la réalisation</h2></div>
       <div class="s-body">
-        <p class="intro">Le studio décide où aller, puis il fabrique ce qu'il faut pour y arriver. <b>Celui qui conçoit est celui qui fabrique.</b></p>
         <div class="flow">
           <div class="flow-ends mono" aria-hidden="true"><span>Très en amont</span><span>Jusqu'à la réalisation</span></div>
           <div class="flow-line" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
@@ -236,7 +238,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
             <li><span class="mono">03</span><h3>Réalisation</h3><p class="q">Comment le faire tourner&nbsp;?</p><p class="d">Développement commercial · Organisation et opérations · Apps et outils · Lieux · Lancement · Pilotage et marges</p></li>
           </ol>
         </div>
-        <p class="trio-line">Le studio peut entrer à n'importe quelle étape. Le plus tôt est le mieux.</p>
+        <p class="trio-line">Nous pouvons intervenir à n'importe quelle étape. Le plus tôt est le mieux.</p>
       </div>
     </section>
 
@@ -244,9 +246,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
       <div class="s-head"><span class="mono num">02</span><h2 id="facons-title">Trois façons de travailler</h2></div>
       <div class="s-body">
         <ol class="ways">
-          <li><h3>Pour vous<small>Au projet</small></h3><div><p>Vous avez une idée ou un problème. Le studio la conçoit et la fabrique, de bout en bout.</p><p>Un business model, une levée de fonds, un lancement.</p></div></li>
-          <li><h3>Avec vous<small>En associé</small></h3><div><p>Vous portez un projet d'entreprise. Le studio s'engage à vos côtés comme associé opérationnel.</p><p>Rémunération possible en parts ou en partage de revenus.</p></div></li>
-          <li><h3>Par nous<small>Les produits du studio</small></h3><div><p>Entre deux projets, le studio crée et publie ses propres produits.</p><p>Ce qu'on y apprend sert aux projets clients.</p></div></li>
+          <li><h3>Pour vous<small>Au projet</small></h3><div><p>Vous avez une idée ou un problème. Nous la concevons et la fabriquons, de bout en bout.</p><p>Un business model, une levée de fonds, un lancement.</p></div></li>
+          <li><h3>Avec vous<small>En associé</small></h3><div><p>Vous portez un projet d'entreprise. Nous nous engageons à vos côtés comme associés opérationnels.</p><p>Rémunération possible en parts ou en partage de revenus.</p></div></li>
+          <li><h3>Par nous<small>Les produits du studio</small></h3><div><p>Entre deux projets, nous créons et publions nos propres produits.</p><p>Ce que nous y apprenons sert aux projets clients.</p></div></li>
         </ol>
       </div>
     </section>
@@ -255,12 +257,12 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
       <div class="s-head"><span class="mono num">03</span><h2 id="principes-title">Principes</h2></div>
       <div class="s-body">
         <ol class="rules">
-          <li>Celui qui conçoit est celui qui fabrique.</li>
+          <li>Nous commençons par le modèle, pas par l'outil.</li>
           <li>Une stratégie qui ne se fabrique pas reste un document.</li>
-          <li>Petit d'abord. On teste avant d'investir.</li>
+          <li>Petit d'abord. Nous testons avant d'investir.</li>
           <li>Chaque livrable sert à quelque chose.</li>
           <li>Un projet est fini quand il tient sans nous.</li>
-          <li>Si le studio n'est pas le bon partenaire, il le dit au premier appel.</li>
+          <li>Si nous ne sommes pas le bon partenaire, nous le disons au premier appel.</li>
         </ol>
       </div>
     </section>
@@ -291,11 +293,11 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
       <div class="s-head"><span class="mono num">05</span><h2 id="fondateur-title">Le fondateur</h2></div>
       <div class="s-body">
         <div class="letter">
-          <p>J'ai passé vingt ans entre Paris, Vancouver, Johannesburg et Lille, de l'événementiel mondial à la direction d'entreprises. Directeur commercial, directeur des opérations, cofondateur.</p>
-          <p>Du business model à la levée de fonds, jusqu'à faire tourner l'activité : Paradiddle réunit ce que j'ai fait toute ma carrière.</p>
+          <p>Benoît Schoeffel a passé vingt ans entre Paris, Vancouver, Johannesburg et Lille, de l'événementiel mondial à la direction d'entreprises. Directeur commercial, directeur des opérations, cofondateur.</p>
+          <p>Du business model à la levée de fonds, jusqu'à faire tourner l'activité : Paradiddle réunit ce qu'il a fait toute sa carrière.</p>
         </div>
         <p class="sign"><b>Benoît Schoeffel</b><span class="mono">Fondateur</span></p>
-        <p class="refs"><span class="mono">Ils m'ont fait confiance</span>Leroy Merlin, Decathlon, Boulanger, E.Leclerc, Auchan, AXA, Caisse d'Épargne, Cofidis, Bonduelle, Roquette, La Redoute, Kiabi, Boralex…</p>
+        <p class="refs"><span class="mono">Ils lui ont fait confiance</span>Leroy Merlin, Decathlon, Boulanger, E.Leclerc, Auchan, AXA, Caisse d'Épargne, Cofidis, Bonduelle, Roquette, La Redoute, Kiabi, Boralex…</p>
       </div>
     </section>
   </div>
@@ -304,7 +306,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
     <div class="wrap">
       <p class="mono">06 · Contact</p>
       <h2 id="contact-title">Un projet ? Parlons-en.</h2>
-      <p>Un premier échange de 30 minutes suffit pour savoir si l'on joue ensemble.</p>
+      <p>Un premier échange de 30 minutes suffit pour savoir si nous jouons ensemble.</p>
       <a class="mail" href="mailto:benoit.schoeffel@paradiddle.fr">benoit.schoeffel@paradiddle.fr</a>
       <p class="tel"><a href="tel:+33622705021">06 22 70 50 21</a></p>
     </div>
