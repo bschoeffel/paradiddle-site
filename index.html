@@ -239,6 +239,22 @@ nav a { text-decoration: underline; text-decoration-color: var(--accent); text-d
 nav a:hover { color: var(--accent-ink); }
 
 
+
+/* Boule orange qui suit le défilement */
+.flow-ball { position: absolute; top: 0; left: 0; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); transition: transform .6s cubic-bezier(.3,1.5,.5,1); z-index: 1; }
+.flow-steps li { transition: opacity .4s ease; }
+.flow-steps .mono { transition: color .4s; }
+.flow[data-step="0"] .flow-steps li:nth-child(1) .mono,
+.flow[data-step="1"] .flow-steps li:nth-child(2) .mono,
+.flow[data-step="2"] .flow-steps li:nth-child(3) .mono { color: var(--accent); }
+@media (max-width: 760px) {
+  .flow-steps li::before { transition: background .4s, border-color .4s; }
+  .flow-steps li:first-child::before { background: var(--paper); border-color: var(--ink); }
+  .flow[data-step="0"] .flow-steps li:nth-child(1)::before,
+  .flow[data-step="1"] .flow-steps li:nth-child(2)::before,
+  .flow[data-step="2"] .flow-steps li:nth-child(3)::before { background: var(--accent); border-color: var(--accent); }
+}
+@media (prefers-reduced-motion: reduce) { .flow-ball, .flow-steps li::before { transition: none; } }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
@@ -286,9 +302,9 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     <section class="s" id="studio" aria-labelledby="studio-title" style="margin-top: 64px;">
       <div class="s-head"><span class="mono num">01</span><h2 id="studio-title">De l'idée à la réalisation</h2></div>
       <div class="s-body">
-        <div class="flow">
+        <div class="flow" data-step="0">
           <div class="flow-ends mono" aria-hidden="true"><span>Très en amont</span><span>Jusqu'à la réalisation</span></div>
-          <div class="flow-line" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+          <div class="flow-line" aria-hidden="true"><i></i><i></i><i></i><b class="flow-ball"></b></div>
           <ol class="flow-steps">
             <li><span class="mono">01</span><h3>Idée et business model</h3><p class="q">Quoi vendre, à qui, à quel prix&nbsp;?</p><p class="d">Thèse et opportunité · Modèle économique · Prix · Positionnement et offre · Naming et marque · Go-to-market</p></li>
             <li><span class="mono">02</span><h3>Investissement</h3><p class="q">Faut-il investir, et combien&nbsp;?</p><p class="d">Business plan · Valorisation · Levée de fonds · Due diligence · M&amp;A</p></li>
@@ -483,5 +499,27 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
 </script>
 
 
+
+<script>
+(function () {
+  var flow = document.querySelector('.flow');
+  if (!flow) return;
+  var dots = flow.querySelectorAll('.flow-line i'), ball = flow.querySelector('.flow-ball');
+  var current = -1, ticking = false;
+  function place(step) {
+    if (ball && dots[step]) ball.style.transform = 'translateX(' + dots[step].offsetLeft + 'px)';
+  }
+  function update() {
+    ticking = false;
+    var r = flow.getBoundingClientRect(), vh = window.innerHeight || 800;
+    var p = (vh * 0.7 - r.top) / Math.max(vh * 0.45, r.height);
+    var step = p < 0.34 ? 0 : p < 0.67 ? 1 : 2;
+    if (step !== current) { current = step; flow.setAttribute('data-step', step); place(step); }
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener('resize', function () { place(current < 0 ? 0 : current); });
+  update();
+})();
+</script>
 </body>
 </html>
