@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr">
+<html lang="fr" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -336,6 +336,11 @@ section.band { padding-block: 64px; }
 .staff { gap: 8px; }
 .hit { box-sizing: border-box; }
 .note .role { display: none; }
+
+/* Contraste renforcé (nov. 2026) */
+:root { --muted: #474747; }
+.why .label, .contact .label { opacity: 1; color: #E6D9E5; }
+.timeline li.now .when { color: var(--accent-ink); }
 </style>
 
 </head>
