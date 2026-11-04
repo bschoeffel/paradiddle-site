@@ -332,6 +332,7 @@ section.band { padding-block: 64px; }
 
 /* Correctifs lisibilité (nov. 2026) */
 .hero h1.h1-xp { font-size: clamp(32px, 3.8vw, 50px); line-height: 1.08; font-weight: 800; letter-spacing: -0.025em; max-width: 20ch; }
+.hero-grid { grid-template-columns: minmax(0, 1fr); }
 .hero-grid { align-items: end; }
 .staff { gap: 8px; }
 .hit { box-sizing: border-box; }
@@ -381,32 +382,6 @@ section.band { padding-block: 64px; }
     <div class="wrap hero-grid">
       <div>
         <h1 id="hero-title" class="h1-xp">Paradiddle conçoit et fabrique des organisations, des produits, des lieux et des <em>marques</em>.</h1>
-        <p class="sub">Tout bouge : marchés, équipes, outils. Ce qui fait tenir un projet, ce sont des fondations solides. Le studio pose la stratégie, organise la tactique et fabrique jusqu'au bout, sur la finance, le business et la tech.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#facons">Travailler ensemble</a>
-          <a class="btn" href="#realisations">Voir les réalisations</a>
-        </div>
-      </div>
-
-      <div class="score" aria-labelledby="score-title">
-        <div class="score-head">
-          <p class="label" id="score-title">Le paradiddle, en 8 frappes</p>
-          <p class="tempo"><label for="bpm">♩ = <output id="bpmOut" for="bpm">96</output></label> <input id="bpm" type="range" min="60" max="160" step="4" value="96"></p>
-        </div>
-        <div class="staff" id="staff" role="img" aria-label="Notation du paradiddle : droite, gauche, droite, droite, puis gauche, droite, gauche, gauche. Accent sur la première frappe de chaque groupe.">
-          <div class="note accent"><span class="acc">&gt;</span><span class="hit">D</span><span class="role">Concevoir</span></div>
-          <div class="note"><span class="acc"></span><span class="hit">G</span><span class="role">Fabriquer</span></div>
-          <div class="note"><span class="acc"></span><span class="hit">D</span><span class="role"></span></div>
-          <div class="note"><span class="acc"></span><span class="hit">D</span><span class="role"></span></div>
-          <div class="note accent"><span class="acc">&gt;</span><span class="hit">G</span><span class="role">Fabriquer</span></div>
-          <div class="note"><span class="acc"></span><span class="hit">D</span><span class="role">Concevoir</span></div>
-          <div class="note"><span class="acc"></span><span class="hit">G</span><span class="role"></span></div>
-          <div class="note"><span class="acc"></span><span class="hit">G</span><span class="role"></span></div>
-        </div>
-        <div class="legend"><span><b>D</b> main droite : concevoir</span><span><b>G</b> main gauche : fabriquer</span></div>
-        <div class="score-controls">
-          <button class="btn primary" id="play" type="button" aria-pressed="false">▶ Écouter le paradiddle</button>
-        </div>
       </div>
     </div>
   </section>
@@ -699,11 +674,13 @@ section.band { padding-block: 64px; }
     notes.forEach(function (n) { n.classList.remove('on'); });
     playBtn.textContent = '▶ Écouter le paradiddle'; playBtn.setAttribute('aria-pressed', 'false');
   }
+  if (playBtn && bpm) {
   playBtn.addEventListener('click', function () { playing ? stop() : start(); });
   bpm.addEventListener('input', function () {
     bpmOut.textContent = bpm.value;
     if (playing) { clearInterval(timer); timer = setInterval(tick, interval()); }
   });
+  }
 
   Array.prototype.forEach.call(document.querySelectorAll('.copy'), function (b) {
     b.addEventListener('click', function () {
