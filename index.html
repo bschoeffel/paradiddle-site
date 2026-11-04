@@ -155,6 +155,27 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .more summary { cursor: pointer; font: 500 13px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--accent-ink); }
 .more .caps { margin-top: 20px; }
 @media (max-width: 760px) { .trio { grid-template-columns: minmax(0, 1fr); gap: 20px; } }
+
+/* De l'amont à la réalisation */
+.flow { margin-top: 48px; }
+.flow-ends { display: flex; justify-content: space-between; color: var(--muted); margin-bottom: 12px; }
+.flow-line { position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; height: 22px; }
+.flow-line::before { content: ""; position: absolute; left: 0; right: 0; top: 10px; height: 2px; background: var(--ink); }
+.flow-line::after { content: ""; position: absolute; right: -2px; top: 4px; border: 7px solid transparent; border-left: 10px solid var(--ink); border-right: 0; }
+.flow-line i { position: relative; width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid var(--ink); background: var(--paper); }
+.flow-line i.on { background: var(--accent); border-color: var(--accent); }
+.flow-steps { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; margin-top: 18px; }
+.flow-steps .mono { color: var(--accent-ink); }
+.flow-steps h3 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-top: 6px; }
+.flow-steps .q { margin-top: 8px; font-size: 18px; line-height: 1.4; }
+.flow-steps .d { margin-top: 12px; font-size: 14px; color: var(--muted); line-height: 1.5; }
+@media (max-width: 760px) {
+  .flow-line, .flow-ends { display: none; }
+  .flow-steps { grid-template-columns: minmax(0, 1fr); gap: 0; border-left: 2px solid var(--ink); padding-left: 20px; }
+  .flow-steps li { position: relative; padding-bottom: 28px; }
+  .flow-steps li::before { content: ""; position: absolute; left: -31px; top: 2px; width: 18px; height: 18px; border-radius: 50%; border: 2.5px solid var(--ink); background: var(--paper); }
+  .flow-steps li:first-child::before { background: var(--accent); border-color: var(--accent); }
+}
 </style>
 </head>
 <body>
@@ -200,12 +221,16 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
       <div class="s-head"><span class="mono num">01</span><h2 id="studio-title">Le studio</h2></div>
       <div class="s-body">
         <p class="intro">Le studio décide où aller, puis il fabrique ce qu'il faut pour y arriver. <b>Celui qui conçoit est celui qui fabrique.</b></p>
-        <div class="caps">
-          <div><h3>Investissement</h3><ul><li>Modèle économique</li><li>Levée de fonds</li><li>Pilotage et marges</li><li>M&amp;A</li></ul></div>
-          <div><h3>Business</h3><ul><li>Positionnement et offre</li><li>Marque et naming</li><li>Organisation commerciale</li><li>Lieux et espaces</li></ul></div>
-          <div><h3>Tech</h3><ul><li>Apps iOS et web</li><li>Outils métier</li><li>Place de l'IA</li><li>Systèmes d'information</li></ul></div>
+        <div class="flow">
+          <div class="flow-ends mono" aria-hidden="true"><span>Très en amont</span><span>Jusqu'à la réalisation</span></div>
+          <div class="flow-line" aria-hidden="true"><i class="on"></i><i></i><i></i></div>
+          <ol class="flow-steps">
+            <li><span class="mono">01</span><h3>Investissement et finance</h3><p class="q">Le projet vaut-il qu'on y mette de l'argent&nbsp;?</p><p class="d">Business plan · Levée de fonds · M&amp;A · Pilotage et marges</p></li>
+            <li><span class="mono">02</span><h3>Business model</h3><p class="q">À qui ça se vend, comment, et à quel prix&nbsp;?</p><p class="d">Positionnement et offre · Marque et naming · Organisation commerciale</p></li>
+            <li><span class="mono">03</span><h3>Réalisation</h3><p class="q">On le fabrique, et on le fait tourner.</p><p class="d">Apps et outils métier · Lieux et espaces · Systèmes d'information · IA</p></li>
+          </ol>
         </div>
-        <p class="trio-line">Un projet tient quand les trois tiennent ensemble.</p>
+        <p class="trio-line">Le studio peut entrer à n'importe quelle étape. Le plus tôt est le mieux.</p>
       </div>
     </section>
 
