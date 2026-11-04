@@ -255,6 +255,9 @@ nav a:hover { color: var(--accent-ink); }
   .flow[data-step="2"] .flow-steps li:nth-child(3)::before { background: var(--accent); border-color: var(--accent); }
 }
 @media (prefers-reduced-motion: reduce) { .flow-ball, .flow-steps li::before { transition: none; } }
+
+/* Cercles accentués en violet prune */
+.hits .hit.on { background: var(--prune); border-color: var(--prune); color: #fff; }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
