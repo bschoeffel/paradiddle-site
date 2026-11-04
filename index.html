@@ -232,6 +232,28 @@ html { scroll-padding-top: 84px; }
 
 /* Menu en Fraunces */
 nav a { font-family: var(--logo); font-weight: 600; font-size: 17px; letter-spacing: -0.01em; text-transform: none; font-variation-settings: "SOFT" 100, "opsz" 24; }
+
+/* Entrées du menu soulignées en orange */
+nav a { text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 6px; }
+nav a:hover { color: var(--accent-ink); }
+
+/* Menu mobile */
+.menu-btn { display: none; align-items: center; gap: 10px; background: none; border: 0; padding: 6px 0; cursor: pointer; color: var(--ink); font-family: var(--logo); font-weight: 600; font-size: 17px; font-variation-settings: "SOFT" 100, "opsz" 24; }
+.menu-ico { position: relative; width: 22px; height: 12px; display: inline-block; }
+.menu-ico i { position: absolute; left: 0; right: 0; height: 2px; background: var(--ink); transition: transform .3s cubic-bezier(.2,.8,.2,1), top .3s, background .2s; }
+.menu-ico i:first-child { top: 0; }
+.menu-ico i:last-child { top: 10px; background: var(--accent); }
+@media (max-width: 720px) {
+  .menu-btn { display: inline-flex; }
+  header .wrap { position: relative; }
+  #menu { position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; padding: 8px max(16px, env(safe-area-inset-left, 0px)) 28px; background: var(--paper); border-bottom: 0.5px solid #555;
+    opacity: 0; transform: translateY(-8px); pointer-events: none; transition: opacity .25s ease, transform .3s cubic-bezier(.2,.8,.2,1); }
+  #menu a { font-size: 34px; letter-spacing: -0.02em; padding: 12px 0; text-underline-offset: 8px; text-decoration-thickness: 3px; }
+  header.open #menu { opacity: 1; transform: none; pointer-events: auto; }
+  header.open .menu-ico i:first-child { top: 5px; transform: rotate(45deg); }
+  header.open .menu-ico i:last-child { top: 5px; transform: rotate(-45deg); }
+}
+@media (prefers-reduced-motion: reduce) { #menu, .menu-ico i { transition: none; } }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
@@ -246,11 +268,12 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
       <span class="wm-rule" aria-hidden="true"></span>
       <span class="wm-st" aria-hidden="true"><i>R</i><span>L</span><span>R</span><span>R</span><i>L</i><span>R</span><span>L</span><span>L</span></span>
     </a>
-    <nav aria-label="Navigation principale">
+    <nav id="menu" aria-label="Navigation principale">
       <a href="#studio">Approche</a>
       <a href="#index">Projets</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu"><span class="menu-lab">Menu</span><span class="menu-ico" aria-hidden="true"><i></i><i></i></span></button>
   </div>
 </header>
 
@@ -451,6 +474,17 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     row.addEventListener('click', function () { play(false); });
     row.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(false); } });
   }
+})();
+</script>
+
+<script>
+(function () {
+  var h = document.querySelector('header'), b = h && h.querySelector('.menu-btn');
+  if (!b) return;
+  function set(open) { h.classList.toggle('open', open); b.setAttribute('aria-expanded', open ? 'true' : 'false'); b.querySelector('.menu-lab').textContent = open ? 'Fermer' : 'Menu'; }
+  b.addEventListener('click', function () { set(!h.classList.contains('open')); });
+  h.querySelectorAll('#menu a').forEach(function (a) { a.addEventListener('click', function () { set(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') set(false); });
 })();
 </script>
 </body>
