@@ -215,6 +215,16 @@ section.s { border-top-width: 1px; }
 .flow-line::after { top: 5px; border-width: 6px 0 6px 9px; }
 .flow-line i { border-width: 1.5px; }
 @media (max-width: 760px) { .flow-steps { border-left-width: 1px; } .flow-steps li::before { border-width: 1.5px; left: -30px; } }
+
+/* Filets encore plus fins (hairline) */
+header { border-bottom: 0.5px solid #555; }
+section.s { border-top: 0.5px solid #555; }
+.index th { border-bottom: 0.5px solid #555; }
+.flow-line::before { height: 0.5px; background: #555; }
+.flow-line::after { border-left-color: #555; border-width: 5px 0 5px 8px; top: 6px; }
+.flow-line i { border-width: 1px; }
+.ways li, .rules li, .index td, .caps div, .flow-steps li { border-color: #E8E8E4; }
+@media (max-width: 760px) { .flow-steps { border-left: 0.5px solid #555; } .flow-steps li::before { border-width: 1px; } }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
