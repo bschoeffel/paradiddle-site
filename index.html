@@ -206,6 +206,15 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 html.pd-intro .hits .hit { transform: scale(0); opacity: 0; }
 html.pd-intro .hero h1 > span, html.pd-intro .hero .lede, html.pd-intro .hits-explain { opacity: 0; transform: translateY(18px); }
 .hero h1 > span, .hero .lede, .hits-explain { transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+
+/* Filets affinés */
+header { border-bottom-width: 1px; }
+section.s { border-top-width: 1px; }
+.index th { border-bottom-width: 1px; }
+.flow-line::before { height: 1px; top: 10.5px; }
+.flow-line::after { top: 5px; border-width: 6px 0 6px 9px; }
+.flow-line i { border-width: 1.5px; }
+@media (max-width: 760px) { .flow-steps { border-left-width: 1px; } .flow-steps li::before { border-width: 1.5px; left: -30px; } }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
