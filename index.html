@@ -9,7 +9,7 @@
 <meta property="og:description" content="Paradiddle conçoit et fabrique des organisations, des produits, des lieux et des marques.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://paradiddle.fr/">
-<meta name="theme-color" content="#FFFFFF">
+<meta name="theme-color" content="#E8541A">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111111'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-weight='900' font-size='38' text-anchor='middle' fill='%23FFFFFF'%3EP%3C/text%3E%3Crect x='14' y='46' width='36' height='3' fill='%23FFFFFF'/%3E%3Ccircle cx='18' cy='55' r='3' fill='%23E8541A'/%3E%3Ccircle cx='32' cy='55' r='3' fill='%23FFFFFF'/%3E%3Ccircle cx='46' cy='55' r='3' fill='%23FFFFFF'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -142,6 +142,16 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 /* Ouverture façon manifeste */
 .hero h1.manifesto { font-size: clamp(30px, 4.2vw, 54px); line-height: 1.1; letter-spacing: -0.03em; font-weight: 400; display: grid; gap: .45em; max-width: 24ch; }
 .hero h1.manifesto .m1 { font-weight: 800; }
+
+/* Ouverture sur aplat orange */
+.hero-band { background: var(--accent); color: var(--ink); padding-bottom: 48px; }
+header { background: var(--accent); }
+.hero-band .hero .lede { color: var(--ink); }
+.hero-band .hero h1 em { color: #FFFFFF; }
+.hero-band .hit { border-color: var(--ink); color: var(--ink); }
+.hero-band .hit.on { background: var(--ink); border-color: var(--ink); color: var(--accent); }
+.hero-band .hits-legend { color: var(--ink); }
+header .wm-st i { color: var(--prune); }
 </style>
 </head>
 <body>
@@ -162,6 +172,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 </header>
 
 <main id="top">
+  <div class="hero-band">
   <div class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <h1 id="hero-title" class="manifesto">
@@ -177,9 +188,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
     </div>
     <div class="hits-legend mono" aria-hidden="true"><span>Main droite · concevoir</span><span>Main gauche · fabriquer</span></div>
   </div>
+  </div>
 
   <div class="wrap">
-    <section class="s" id="studio" aria-labelledby="studio-title" style="margin-top: 72px;">
+    <section class="s" id="studio" aria-labelledby="studio-title" style="margin-top: 64px;">
       <div class="s-head"><span class="mono num">01</span><h2 id="studio-title">Le studio</h2></div>
       <div class="s-body">
         <p class="intro">Le studio décide où aller, puis il fabrique ce qu'il faut pour y arriver. <b>Celui qui conçoit est celui qui fabrique.</b></p>
