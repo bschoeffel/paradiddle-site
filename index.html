@@ -185,6 +185,8 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 
 .hits-explain { max-width: 62ch; margin-top: 14px; font-size: 16px; line-height: 1.55; color: var(--muted); }
 .hits-explain b { color: var(--ink); }
+
+@media (max-width: 700px) { .index tr { grid-template-columns: minmax(0, 1fr); } .index td.p, .index td.n, .index td.st { grid-column: 1; } }
 </style>
 </head>
 <body>
@@ -269,17 +271,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
       <div class="s-head"><span class="mono num">04</span><h2 id="index-title">Projets</h2></div>
       <div class="s-body">
         <table class="index">
-          <thead><tr><th scope="col">Année</th><th scope="col">Projet</th><th scope="col">Nature</th><th scope="col">Étapes</th><th scope="col">Résultat</th></tr></thead>
+          <thead><tr><th scope="col">Projet</th><th scope="col">Nature</th><th scope="col">Étapes</th></tr></thead>
           <tbody>
-            <tr><td class="y">—</td><td class="p">Mes Proches</td><td class="n">App iOS · par nous</td><td class="st" aria-label="Étapes 01, 03"><i class="on">01</i><i>02</i><i class="on">03</i></td><td class="r"></td></tr>
-            <tr><td class="y">—</td><td class="p">Maison Saint O'</td><td class="n">Lieu, de la vision au chantier · pour vous</td><td class="st" aria-label="Étapes 01, 03"><i class="on">01</i><i>02</i><i class="on">03</i></td><td class="r"></td></tr>
-            <tr><td class="y">2024–25</td><td class="p">groove</td><td class="n">Cofondation d'un cabinet de transformation</td><td class="st" aria-label="Étapes 01, 02, 03"><i class="on">01</i><i class="on">02</i><i class="on">03</i></td><td class="r">5 clients en 8 mois</td></tr>
-            <tr><td class="y">2023–24</td><td class="p">Willing</td><td class="n">Retournement, direction Lille</td><td class="st" aria-label="Étapes 03"><i>01</i><i>02</i><i class="on">03</i></td><td class="r">−45 % → +35 % de marge</td></tr>
-            <tr><td class="y">2022–23</td><td class="p">Klareo</td><td class="n">Levée et go-to-market</td><td class="st" aria-label="Étapes 01, 02"><i class="on">01</i><i class="on">02</i><i>03</i></td><td class="r">3 M€ levés</td></tr>
-            <tr><td class="y">2014–22</td><td class="p">Projexion</td><td class="n">Croissance, direction commerciale et opérations</td><td class="st" aria-label="Étapes 03"><i>01</i><i>02</i><i class="on">03</i></td><td class="r">×4,6 sans levée</td></tr>
-            <tr><td class="y">2011–14</td><td class="p">altima° – Accenture</td><td class="n">Gestion de projet, conduite du changement</td><td class="st" aria-label="Étapes 03"><i>01</i><i>02</i><i class="on">03</i></td><td class="r"></td></tr>
-            <tr><td class="y">2008–10</td><td class="p">DDB Canada</td><td class="n">Stratégie digitale</td><td class="st" aria-label="Étapes 01"><i class="on">01</i><i>02</i><i>03</i></td><td class="r"></td></tr>
-            <tr><td class="y">2007–10</td><td class="p">Sport Events International</td><td class="n">Rugby World Cup 2007, Vancouver 2010, FIFA 2010</td><td class="st" aria-label="Étapes 03"><i>01</i><i>02</i><i class="on">03</i></td><td class="r"></td></tr>
+            <tr><td class="p">Mes Proches</td><td class="n">App iOS · par nous</td><td class="st" aria-label="Étapes 01, 03"><i class="on">01</i><i>02</i><i class="on">03</i></td></tr>
+            <tr><td class="p">Maison Saint O'</td><td class="n">Lieu, de la vision au chantier · pour vous</td><td class="st" aria-label="Étapes 01, 03"><i class="on">01</i><i>02</i><i class="on">03</i></td></tr>
           </tbody>
         </table>
       </div>
