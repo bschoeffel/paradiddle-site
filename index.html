@@ -392,6 +392,26 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   var hits = row.querySelectorAll('.hit');
   var texts = [].slice.call(document.querySelectorAll('.hero h1 > span, .hero .lede, .hits-explain'));
   var acc = [0, 4], busy = false;
+  var actx = null, seqLR = 'RLRRLRLL';
+  function audio() {
+    try { actx = actx || new (window.AudioContext || window.webkitAudioContext)(); if (actx.state === 'suspended') actx.resume(); } catch (e) { actx = null; }
+    return actx;
+  }
+  function snare(i) {
+    if (!actx || actx.state !== 'running') return;
+    var big = acc.indexOf(i) > -1, left = seqLR[i] === 'L', t = actx.currentTime;
+    var len = 0.16, buf = actx.createBuffer(1, Math.floor(actx.sampleRate * len), actx.sampleRate), d = buf.getChannelData(0);
+    for (var k = 0; k < d.length; k++) d[k] = (Math.random() * 2 - 1) * Math.pow(1 - k / d.length, 2.6);
+    var n = actx.createBufferSource(); n.buffer = buf;
+    var hp = actx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 1400;
+    var gn = actx.createGain(); gn.gain.setValueAtTime(big ? 0.55 : 0.28, t); gn.gain.exponentialRampToValueAtTime(0.001, t + len);
+    var o = actx.createOscillator(); o.type = 'triangle'; o.frequency.setValueAtTime(big ? 230 : 200, t); o.frequency.exponentialRampToValueAtTime(120, t + 0.09);
+    var go = actx.createGain(); go.gain.setValueAtTime(big ? 0.5 : 0.25, t); go.gain.exponentialRampToValueAtTime(0.001, t + 0.1);
+    var out = actx.createStereoPanner ? actx.createStereoPanner() : actx.createGain();
+    if (out.pan) out.pan.value = left ? -0.35 : 0.35;
+    n.connect(hp); hp.connect(gn); gn.connect(out); o.connect(go); go.connect(out); out.connect(actx.destination);
+    n.start(t); o.start(t); o.stop(t + 0.12);
+  }
   var canAnimate = !!Element.prototype.animate;
   try { if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) canAnimate = false; } catch (e) {}
 
@@ -414,6 +434,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     function at(x, y, sx, sy) { return 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + (sx || 1) + ',' + (sy || 1) + ')'; }
     function land(i) {
       var h = hits[i], big = acc.indexOf(i) > -1;
+      snare(i);
       if (intro) {
         h.style.opacity = '1';
         h.animate([{ transform: 'scale(0)' }, { transform: big ? 'scale(1.18,.78)' : 'scale(1.1,.86)', offset: .55 }, { transform: 'scale(1)' }], { duration: big ? 420 : 340, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'forwards' });
@@ -453,10 +474,10 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   }
   if (canAnimate) {
     row.setAttribute('tabindex', '0');
-    row.setAttribute('title', 'Rejouer le paradiddle');
+    row.setAttribute('title', 'Rejouer le paradiddle (avec le son)');
     row.style.cursor = 'pointer';
-    row.addEventListener('click', function () { play(false); });
-    row.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); play(false); } });
+    row.addEventListener('click', function () { audio(); play(false); });
+    row.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); audio(); play(false); } });
   }
 })();
 </script>
