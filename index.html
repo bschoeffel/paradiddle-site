@@ -1,0 +1,800 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Paradiddle · Studio de création</title>
+<meta name="description" content="Paradiddle, le studio de création de Benoît Schoeffel : 20 ans de stratégie, de tactique et d'opérations, sur la finance, le business et la tech. On conçoit et on fabrique des projets qui tiennent.">
+<meta property="og:title" content="Paradiddle · Studio de création">
+<meta property="og:description" content="20 ans de stratégie, de tactique et d'opérations. On conçoit et on fabrique des projets qui tiennent.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://paradiddle.fr/">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23111111'/%3E%3Ctext x='32' y='40' font-family='Georgia,serif' font-weight='900' font-size='38' text-anchor='middle' fill='%23FFFFFF'%3EP%3C/text%3E%3Crect x='14' y='46' width='36' height='3' fill='%23FFFFFF'/%3E%3Ccircle cx='18' cy='55' r='3' fill='%23E8541A'/%3E%3Ccircle cx='32' cy='55' r='3' fill='%23FFFFFF'/%3E%3Ccircle cx='46' cy='55' r='3' fill='%23FFFFFF'/%3E%3C/svg%3E">
+<style>html{color-scheme:light}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..900,0..100&family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout : un magazine de projets. Page blanche, titres en grotesque gras, une seule couleur vive (orange), prune pour les bandes sombres. */
+:root {
+  --paper: #FFFFFF;
+  --paper-2: #F4F4F2;
+  --ink: #111111;
+  --muted: #5F5F5F;
+  --forest: #3B1F3A;
+  --forest-ink: #FFFFFF;
+  --brass: #E8541A;
+  --brass-soft: #F6C9A8;
+  --accent-ink: #B23C0B;
+  --line: #E4E4E0;
+  --brand: #111111;
+  --logo: "Fraunces", Georgia, "Times New Roman", serif;
+  --display: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --body: "Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111111; --paper-2: #1C1C1C; --ink: #F4F4F2; --muted: #A8A8A8;
+    --forest: #3B1F3A; --forest-ink: #F4F4F2; --brass: #FF6A2B; --brass-soft: #3A2116; --accent-ink: #FF8A57; --line: #2C2C2C; --brand: #F4F4F2;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111111; --paper-2: #1C1C1C; --ink: #F4F4F2; --muted: #A8A8A8;
+  --forest: #3B1F3A; --forest-ink: #F4F4F2; --brass: #FF6A2B; --brass-soft: #3A2116; --accent-ink: #FF8A57; --line: #2C2C2C; --brand: #F4F4F2;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; }
+.band { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1120px; margin: 0 auto; }
+h1, h2, h3, h4 { font-family: var(--display); text-wrap: balance; margin: 0; letter-spacing: -0.03em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--brass); outline-offset: 3px; border-radius: 4px; }
+.label { font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+
+/* Nav */
+header.band { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 14px; flex-wrap: wrap; }
+.brand { display: inline-grid; gap: 3px; text-decoration: none; color: var(--brand); justify-items: stretch; }
+.brand .wm { font-family: var(--logo); font-weight: 900; font-size: 26px; line-height: .9; letter-spacing: -0.025em; font-variation-settings: "SOFT" 100, "opsz" 144; }
+.brand .wm-rule { height: 1.5px; background: currentColor; }
+.brand .wm-st { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); font: 600 8.5px var(--mono); text-align: center; line-height: 1; }
+.brand .wm-st i { font-style: normal; color: var(--brass); }
+.foot-logo { display: inline-grid; gap: 6px; color: var(--ink); }
+.foot-logo .wm { font-family: var(--logo); font-weight: 900; font-size: 44px; line-height: .9; letter-spacing: -0.025em; font-variation-settings: "SOFT" 100, "opsz" 144; }
+.foot-logo .wm-rule { height: 2px; background: currentColor; }
+.foot-logo .wm-st { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); font: 600 13px var(--mono); text-align: center; line-height: 1; }
+.foot-logo .wm-st i { font-style: normal; color: var(--brass); }
+.navlinks { display: flex; gap: 22px; flex-wrap: wrap; font-size: 15px; }
+.navlinks a { text-decoration: none; color: var(--muted); }
+.navlinks a:hover { color: var(--ink); }
+
+/* Hero */
+.hero { padding-block: 72px 64px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(56px, 10vw, 128px); line-height: 0.92; font-weight: 900; letter-spacing: -0.02em; color: var(--ink); }
+.hero h1 em { font-style: normal; color: var(--brass); }
+.hero .lede { font-size: clamp(20px, 2.4vw, 26px); line-height: 1.35; margin-top: 22px; max-width: 30ch; font-family: var(--display); font-variation-settings: "SOFT" 100, "opsz" 36; font-weight: 400; }
+.hero .sub { margin-top: 18px; color: var(--muted); max-width: 52ch; }
+.cta-row { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px; font: 600 15px var(--body); text-decoration: none; border: 1.5px solid var(--ink); background: transparent; color: var(--ink); cursor: pointer; }
+.btn.primary { background: var(--forest); border-color: var(--forest); color: var(--forest-ink); }
+.btn:hover { transform: translateY(-1px); }
+
+/* Partition */
+.score { background: var(--paper-2); border-radius: 0; padding: 26px 24px 22px; display: grid; gap: 18px; }
+.score-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.staff { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 6px; }
+.note { display: grid; gap: 6px; justify-items: center; }
+.hit { width: 100%; aspect-ratio: 1; max-width: 56px; border-radius: 50%; display: grid; place-items: center; font: 600 18px var(--mono); border: 2px solid var(--ink); color: var(--ink); background: transparent; transition: background-color .08s, color .08s, transform .08s; }
+.note.accent .hit { border-width: 3px; }
+.note .acc { font: 500 14px var(--mono); color: var(--brass); height: 16px; }
+.note .role { font: 500 10px var(--mono); letter-spacing: .08em; color: var(--muted); text-transform: uppercase; text-align: center; }
+.note.on .hit { background: var(--ink); color: var(--paper); transform: scale(1.06); }
+.note.on.accent .hit { background: var(--brass); border-color: var(--brass); color: var(--ink); }
+.legend { display: flex; gap: 18px; flex-wrap: wrap; font-size: 14px; color: var(--muted); }
+.legend b { color: var(--ink); font-weight: 600; }
+.score-controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.tempo { font: 500 13px var(--mono); color: var(--muted); }
+.tempo input { accent-color: var(--brass); vertical-align: middle; width: 120px; }
+
+/* Sections */
+section.band { padding-block: 88px; }
+.sec-head { display: grid; gap: 14px; margin-bottom: 40px; max-width: 760px; }
+.sec-head h2 { font-size: clamp(34px, 5vw, 54px); line-height: 1.02; font-weight: 800; }
+.sec-head p { color: var(--muted); font-size: 18px; max-width: 60ch; }
+
+/* Le nom */
+.why { background: var(--forest); color: var(--forest-ink); }
+.why .label, .contact .label { color: var(--forest-ink); opacity: .78; }
+.why .sec-head p { color: var(--forest-ink); opacity: .82; }
+.hands { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.hand { border-top: 1.5px solid rgba(238, 241, 232, .35); padding-top: 18px; display: grid; gap: 8px; min-width: 0; }
+.hand .k { font: 500 13px var(--mono); letter-spacing: .1em; }
+.hand h3 { font-size: 28px; font-weight: 700; }
+.hand p { opacity: .85; }
+
+/* Offre */
+.offers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.offer { background: var(--paper-2); border-radius: 0; padding: 28px; display: grid; gap: 14px; align-content: start; min-width: 0; }
+.offer h3 { font-size: 26px; line-height: 1.1; font-weight: 700; }
+.offer .intro { color: var(--muted); }
+.offer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.offer li { display: grid; gap: 2px; padding-top: 12px; border-top: 1px solid var(--line); }
+.offer li b { font-weight: 600; }
+.offer li span { color: var(--muted); font-size: 15px; }
+
+/* Chiffres */
+.numbers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 1.5px solid var(--ink); }
+.num { padding: 26px 20px 26px 0; border-bottom: 1px solid var(--line); display: grid; gap: 4px; min-width: 0; }
+.num strong { font-family: var(--display); font-variation-settings: "SOFT" 100, "opsz" 144; font-weight: 800; font-size: clamp(38px, 5vw, 58px); line-height: 1; font-variant-numeric: tabular-nums; }
+.num span { color: var(--muted); font-size: 15px; }
+
+/* Parcours */
+.timeline { list-style: none; padding: 0; margin: 48px 0 0; display: grid; gap: 0; }
+.timeline li { display: grid; grid-template-columns: 130px minmax(0, 1fr); gap: 20px; padding: 16px 0; border-top: 1px solid var(--line); }
+.timeline .when { font: 500 14px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.timeline .what b { font-weight: 600; }
+.timeline .what span { color: var(--muted); }
+.timeline li.now .when { color: var(--brass); }
+
+/* Cas */
+.cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.case { border: 1.5px solid var(--ink); border-radius: 0; padding: 28px; display: grid; gap: 20px; align-content: start; min-width: 0; }
+.case-head { display: grid; gap: 4px; }
+.case-head .when { font: 500 13px var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.case-head h3 { font-size: 32px; font-weight: 800; }
+.case-head .role { color: var(--muted); font-size: 15px; }
+.case-result { display: grid; gap: 4px; padding: 16px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.case-result strong { font-family: var(--display); font-variation-settings: "SOFT" 100, "opsz" 144; font-weight: 800; font-size: clamp(34px, 4.4vw, 48px); line-height: 1; color: var(--forest); font-variant-numeric: tabular-nums; }
+:root[data-theme="dark"] .case-result strong { color: var(--brass); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .case-result strong { color: var(--brass); } }
+.case-result span { color: var(--muted); font-size: 15px; }
+.case-hands { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+.case-hands > div { display: grid; gap: 4px; min-width: 0; }
+.case-hands .k { font: 500 12px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.todo { color: var(--muted); font-style: italic; font-size: 15px; }
+
+/* Réalisations */
+.works { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px; }
+.work { border: 1.5px solid var(--ink); border-radius: 0; padding: 28px; display: grid; gap: 10px; min-width: 0; }
+.work h3 { font-size: 28px; font-weight: 700; }
+.work .todo { color: var(--muted); font-style: italic; }
+
+/* Références */
+.sectors { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0 28px; }
+.sector { padding: 14px 0; border-top: 1px solid var(--line); display: grid; gap: 2px; min-width: 0; }
+.sector b { font-weight: 600; }
+.sector span { color: var(--muted); font-size: 15px; }
+
+/* Contact */
+.contact { background: var(--forest); color: var(--forest-ink); }
+.contact h2 { font-size: clamp(40px, 7vw, 84px); font-weight: 900; line-height: .98; }
+.contact-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 48px; align-items: end; }
+.contact p.sub { opacity: .85; margin-top: 18px; max-width: 46ch; }
+.coords { display: grid; gap: 14px; }
+.coord { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 0; border-top: 1px solid rgba(238, 241, 232, .3); flex-wrap: wrap; }
+.coord .v { font: 500 17px var(--mono); user-select: all; overflow-wrap: anywhere; min-width: 0; }
+.copy { font: 600 13px var(--body); padding: 8px 14px; border-radius: 999px; border: 1.5px solid var(--forest-ink); background: transparent; color: var(--forest-ink); cursor: pointer; }
+footer.band { padding-block: 28px; font-size: 14px; color: var(--muted); }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+@media (max-width: 860px) {
+  .hero-grid, .contact-grid { grid-template-columns: minmax(0, 1fr); }
+  .hands, .offers { grid-template-columns: minmax(0, 1fr); }
+  .numbers { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .works, .cases { grid-template-columns: minmax(0, 1fr); }
+  section.band { padding-block: 64px; }
+}
+@media (max-width: 460px) {
+  .numbers { grid-template-columns: minmax(0, 1fr); }
+  .timeline li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  .case-hands { grid-template-columns: minmax(0, 1fr); }
+  .navlinks { gap: 14px; }
+  .staff { gap: 3px; }
+  .hit { font-size: 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn:hover { transform: none; }
+  .hit { transition: none; }
+  .note.on .hit { transform: none; }
+}
+
+/* Studio */
+.tags { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.tag { display: inline-block; font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; background: var(--forest); color: var(--forest-ink); justify-self: start; }
+.tag.alt { background: var(--brass); color: var(--ink); }
+.offer .price { font: 500 14px var(--mono); color: var(--muted); padding-top: 12px; border-top: 1.5px solid var(--ink); }
+.method { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+.method li { display: grid; gap: 8px; align-content: start; min-width: 0; }
+.method .step { font-family: var(--display); font-variation-settings: "SOFT" 100, "opsz" 144; font-weight: 900; font-size: 64px; line-height: 1; color: var(--brass); }
+.method h3 { font-size: 28px; font-weight: 700; }
+.method .dur { font: 500 13px var(--mono); color: var(--muted); }
+@media (max-width: 860px) { .method { grid-template-columns: minmax(0, 1fr); } }
+
+/* Exemples */
+.examples-head { display: grid; gap: 8px; margin: 64px 0 24px; }
+.examples-head h3 { font-size: clamp(28px, 3.6vw, 38px); font-weight: 800; }
+.examples { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+.ex { border: 1.5px solid var(--line); border-radius: 0; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.ex h4 { margin: 0; font-family: var(--display); font-variation-settings: "SOFT" 100, "opsz" 72; font-weight: 700; font-size: 22px; line-height: 1.15; }
+.ex .sit { color: var(--muted); font-size: 15px; }
+.ex dl { margin: 0; display: grid; gap: 8px; }
+.ex dl div { display: grid; gap: 2px; }
+.ex dt { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ex dd { margin: 0; font-size: 15px; }
+.ex .deliv { font-size: 14px; font-weight: 600; padding-top: 10px; border-top: 1px solid var(--line); }
+@media (max-width: 960px) { .examples { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .examples { grid-template-columns: minmax(0, 1fr); } }
+
+/* Expertises */
+.h1-xp { font-size: clamp(40px, 6.4vw, 76px); line-height: 1; font-weight: 800; letter-spacing: -0.015em; }
+.h1-xp .big { display: block; font-size: 1.9em; font-weight: 900; line-height: .9; color: var(--forest); }
+:root[data-theme="dark"] .h1-xp .big { color: var(--brass); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .h1-xp .big { color: var(--brass); } }
+.h1-xp em { font-style: normal; color: var(--brass); }
+.matrix { display: grid; border-top: 1.5px solid var(--ink); }
+.mx-row { display: grid; grid-template-columns: 150px repeat(3, minmax(0, 1fr)); gap: 0 24px; padding: 18px 0; border-bottom: 1px solid var(--line); align-items: start; }
+.mx-head { padding: 14px 0; }
+.mx-head span { font-family: var(--display); font-variation-settings: "SOFT" 100, "opsz" 144; font-weight: 800; font-size: 26px; line-height: 1.1; display: grid; gap: 2px; }
+.mx-head small { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.mx-side { font: 600 13px var(--mono); letter-spacing: .12em; text-transform: uppercase; padding-top: 3px; color: var(--forest); }
+:root[data-theme="dark"] .mx-side { color: var(--brass); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .mx-side { color: var(--brass); } }
+.mx-cell { min-width: 0; font-size: 16px; }
+.mx-col { display: none; }
+.proof { display: flex; flex-wrap: wrap; gap: 14px 40px; margin-top: 36px; }
+.proof div { display: grid; gap: 2px; }
+.proof strong { font-family: var(--display); font-variation-settings: "SOFT" 100, "opsz" 144; font-weight: 800; font-size: 30px; line-height: 1; font-variant-numeric: tabular-nums; }
+.proof span { font-size: 14px; color: var(--muted); }
+@media (max-width: 760px) {
+  .mx-head { display: none; }
+  .mx-row { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .mx-side { font-size: 15px; }
+  .mx-col { display: block; font: 600 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+}
+
+
+/* Magazine */
+.work { border: 0; padding: 0; gap: 12px; }
+.work .visual { aspect-ratio: 4 / 3; max-width: 100%; display: grid; align-content: space-between; padding: 22px; box-sizing: border-box; transition: transform .2s; }
+.work .visual span { font-family: var(--display); font-weight: 800; font-size: clamp(28px, 4vw, 44px); letter-spacing: -0.03em; line-height: 1; }
+.work .visual em { font: 500 12px var(--mono); font-style: normal; opacity: .75; }
+.work .visual.v1 { background: var(--forest); color: var(--forest-ink); }
+.work .visual.v2 { background: var(--brass); color: #111111; }
+.work:hover .visual { transform: translateY(-4px); }
+.work:hover h3 { color: var(--accent-ink); }
+.tag { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+.tag.alt { background: var(--brass); color: #111111; border-color: var(--brass); }
+.case { border: 0; border-top: 1.5px solid var(--ink); padding: 24px 0 0; }
+.offer { background: transparent; border-top: 1.5px solid var(--ink); padding: 24px 0 0; }
+.ex { border: 0; border-top: 1px solid var(--line); padding: 20px 0 0; }
+.hero h1 em, .h1-xp em { color: var(--brass); }
+.sec-head h2, .h1-xp { font-weight: 800; letter-spacing: -0.035em; }
+.btn.primary { background: var(--ink); border-color: var(--ink); color: var(--paper); }
+.btn.primary:hover { background: var(--brass); border-color: var(--brass); color: #111111; }
+.case-result strong { color: var(--ink); }
+.hero h1 { font-weight: 800; }
+@media (prefers-reduced-motion: reduce) { .work .visual { transition: none; } .work:hover .visual { transform: none; } }
+
+/* Échelle typographique resserrée */
+.h1-xp { font-size: clamp(32px, 4.4vw, 56px); line-height: 1.02; }
+.h1-xp .big { font-size: 1.6em; }
+.sec-head h2 { font-size: clamp(28px, 3.6vw, 42px); line-height: 1.05; }
+.sec-head p { font-size: 17px; }
+.hero { padding-block: 56px 48px; }
+.hero .sub { font-size: 17px; }
+.mx-head span { font-size: 22px; }
+.proof strong { font-size: 26px; }
+.case-head h3, .work h3, .offer h3 { font-size: 24px; }
+.case-result strong { font-size: clamp(30px, 3.4vw, 40px); }
+.method .step { font-size: 48px; }
+.method h3, .hand h3 { font-size: 24px; }
+.work .visual span { font-size: clamp(24px, 3vw, 34px); }
+.examples-head h3 { font-size: clamp(24px, 3vw, 30px); }
+.contact h2 { font-size: clamp(34px, 5vw, 60px); }
+section.band { padding-block: 72px; }
+@media (max-width: 860px) { section.band { padding-block: 56px; } }
+
+/* Échelle sobre, façon studio produit */
+body { font-size: 16px; }
+.h1-xp { font-size: clamp(30px, 3.6vw, 48px); line-height: 1.08; letter-spacing: -0.025em; max-width: 18ch; }
+.h1-xp .big { display: inline; font-size: 1em; font-weight: 800; color: inherit; }
+:root[data-theme="dark"] .h1-xp .big { color: inherit; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .h1-xp .big { color: inherit; } }
+.hero { padding-block: 48px 40px; }
+.hero .sub, .sec-head p { font-size: 16px; }
+.sec-head { margin-bottom: 32px; gap: 10px; }
+.sec-head h2 { font-size: clamp(24px, 2.6vw, 32px); line-height: 1.12; letter-spacing: -0.02em; }
+.mx-head span { font-size: 18px; }
+.mx-cell { font-size: 15px; }
+.proof strong { font-size: 22px; }
+.case-head h3, .work h3, .offer h3, .method h3, .hand h3 { font-size: 20px; letter-spacing: -0.015em; }
+.case-result strong { font-size: clamp(24px, 2.4vw, 30px); }
+.method .step { font-size: 32px; }
+.work .visual span { font-size: clamp(20px, 2.2vw, 26px); }
+.ex h4 { font-size: 18px; }
+.examples-head { margin: 48px 0 20px; }
+.examples-head h3 { font-size: 22px; }
+.contact h2 { font-size: clamp(28px, 3.4vw, 44px); }
+.timeline li, .offer li span, .ex dd, .ex .sit { font-size: 15px; }
+section.band { padding-block: 64px; }
+@media (max-width: 860px) { section.band { padding-block: 48px; } }
+
+.legal { padding-block: 24px; border-top: 1px solid var(--line); }
+.legal summary { cursor: pointer; font: 500 13px var(--mono); color: var(--muted); }
+.legal-body { display: grid; gap: 10px; margin-top: 16px; font-size: 14px; color: var(--muted); max-width: 70ch; }
+</style>
+
+</head>
+<body>
+<header class="band">
+  <div class="wrap">
+    <nav aria-label="Navigation principale">
+      <a class="brand" href="#top" aria-label="Paradiddle, retour en haut">
+        <span class="wm">Paradiddle</span>
+        <span class="wm-rule" aria-hidden="true"></span>
+        <span class="wm-st" aria-hidden="true"><i>R</i><span>L</span><span>R</span><span>R</span><i>L</i><span>R</span><span>L</span><span>L</span></span>
+      </a>
+      <div class="navlinks">
+        <a href="#expertises">Expertises</a>
+        <a href="#facons">Travailler ensemble</a>
+        <a href="#realisations">Réalisations</a>
+        <a href="#methode">Méthode</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="band hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="label">Paradiddle · studio de création · Benoît Schoeffel</p>
+        <h1 id="hero-title" class="h1-xp"><span class="big">20 ans</span> de stratégie, de tactique et d'<em>opérations</em>.</h1>
+        <p class="sub">Tout bouge : marchés, équipes, outils. Ce qui fait tenir un projet, ce sont des fondations solides. Le studio pose la stratégie, organise la tactique et fabrique jusqu'au bout, sur la finance, le business et la tech.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="#facons">Travailler ensemble</a>
+          <a class="btn" href="#realisations">Voir les réalisations</a>
+        </div>
+      </div>
+
+      <div class="score" aria-labelledby="score-title">
+        <div class="score-head">
+          <p class="label" id="score-title">Le paradiddle, en 8 frappes</p>
+          <p class="tempo"><label for="bpm">♩ = <output id="bpmOut" for="bpm">96</output></label> <input id="bpm" type="range" min="60" max="160" step="4" value="96"></p>
+        </div>
+        <div class="staff" id="staff" role="img" aria-label="Notation du paradiddle : droite, gauche, droite, droite, puis gauche, droite, gauche, gauche. Accent sur la première frappe de chaque groupe.">
+          <div class="note accent"><span class="acc">&gt;</span><span class="hit">D</span><span class="role">Concevoir</span></div>
+          <div class="note"><span class="acc"></span><span class="hit">G</span><span class="role">Fabriquer</span></div>
+          <div class="note"><span class="acc"></span><span class="hit">D</span><span class="role"></span></div>
+          <div class="note"><span class="acc"></span><span class="hit">D</span><span class="role"></span></div>
+          <div class="note accent"><span class="acc">&gt;</span><span class="hit">G</span><span class="role">Fabriquer</span></div>
+          <div class="note"><span class="acc"></span><span class="hit">D</span><span class="role">Concevoir</span></div>
+          <div class="note"><span class="acc"></span><span class="hit">G</span><span class="role"></span></div>
+          <div class="note"><span class="acc"></span><span class="hit">G</span><span class="role"></span></div>
+        </div>
+        <div class="legend"><span><b>D</b> main droite : concevoir</span><span><b>G</b> main gauche : fabriquer</span></div>
+        <div class="score-controls">
+          <button class="btn primary" id="play" type="button" aria-pressed="false">▶ Écouter le paradiddle</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="expertises" aria-labelledby="xp-title" style="padding-top: 24px;">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Stratégie · Tactique · Opérations</p>
+        <h2 id="xp-title">Trois temps, sur trois terrains.</h2>
+        <p>La même partition s'applique à la finance, au business et à la tech : décider où aller, organiser le chemin, puis faire tourner la machine.</p>
+      </div>
+      <div class="matrix" role="table" aria-label="Expertises par terrain et par temps">
+        <div class="mx-row mx-head" role="row">
+          <span class="mx-corner" role="columnheader"></span>
+          <span role="columnheader">Stratégie<small>décider où aller</small></span>
+          <span role="columnheader">Tactique<small>organiser le chemin</small></span>
+          <span role="columnheader">Opérations<small>faire tourner</small></span>
+        </div>
+        <div class="mx-row" role="row">
+          <span class="mx-side" role="rowheader">Finance</span>
+          <div class="mx-cell" role="cell"><b class="mx-col">Stratégie</b>Modèle économique, plan de financement, préparation de levée de fonds.</div>
+          <div class="mx-cell" role="cell"><b class="mx-col">Tactique</b>Budget, politique de prix, trajectoire de marge.</div>
+          <div class="mx-cell" role="cell"><b class="mx-col">Opérations</b>Pilotage du P&amp;L, tableaux de bord, opérations de M&amp;A.</div>
+        </div>
+        <div class="mx-row" role="row">
+          <span class="mx-side" role="rowheader">Business</span>
+          <div class="mx-cell" role="cell"><b class="mx-col">Stratégie</b>Positionnement, offre, business model, marque.</div>
+          <div class="mx-cell" role="cell"><b class="mx-col">Tactique</b>Roadmap de croissance, go-to-market, structuration commerciale.</div>
+          <div class="mx-cell" role="cell"><b class="mx-col">Opérations</b>Animation des équipes, grands comptes, organisation et process.</div>
+        </div>
+        <div class="mx-row" role="row">
+          <span class="mx-side" role="rowheader">Tech</span>
+          <div class="mx-cell" role="cell"><b class="mx-col">Stratégie</b>Choix d'outils, place de l'IA, architecture du système d'information.</div>
+          <div class="mx-cell" role="cell"><b class="mx-col">Tactique</b>Roadmap produit, priorisation, synergie business et tech.</div>
+          <div class="mx-cell" role="cell"><b class="mx-col">Opérations</b>Conception et développement d'apps, déploiement d'outils métier.</div>
+        </div>
+      </div>
+      <div class="proof">
+        <div><strong>×4,6</strong><span>croissance sans levée</span></div>
+        <div><strong>3 M€</strong><span>levés</span></div>
+        <div><strong>3</strong><span>opérations de M&amp;A</span></div>
+        <div><strong>−45 % → +35 %</strong><span>de marge en 5 mois</span></div>
+        <div><strong>20+</strong><span>clients grands comptes</span></div>
+      </div>
+    </div>
+  </section>
+  <section class="band" id="facons" aria-labelledby="facons-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Travailler avec le studio</p>
+        <h2 id="facons-title">Trois façons de jouer ensemble.</h2>
+      </div>
+      <div class="offers">
+        <article class="offer">
+          <p class="tag">Pour vous</p>
+          <h3>Votre projet, de bout en bout</h3>
+          <p class="intro">Vous avez une idée ou un problème. Le studio la conçoit et la fabrique avec vous.</p>
+          <ul>
+            <li><b>Une organisation</b><span>Structurer une activité pour qu'elle passe à l'échelle : offre, équipes, process, outils.</span></li>
+            <li><b>Un produit numérique</b><span>Une app ou un outil métier, de la maquette à la mise en ligne.</span></li>
+            <li><b>Un lieu</b><span>Un espace aménagé, du concept au chantier livré.</span></li>
+            <li><b>Une marque</b><span>Le positionnement, le nom, l'identité et le lancement.</span></li>
+          </ul>
+          <p class="price">Au projet, par étape.</p>
+        </article>
+        <article class="offer">
+          <p class="tag">Avec vous</p>
+          <h3>Co-créer une activité</h3>
+          <p class="intro">Vous portez un projet d'entreprise. Le studio s'engage à vos côtés, comme associé opérationnel.</p>
+          <ul>
+            <li><b>Du concept au marché</b><span>Lancement de structures, jusqu'au go-to-market.</span></li>
+            <li><b>Exploration</b><span>Nouveaux marchés : musique, tech, services.</span></li>
+            <li><b>Engagement long</b><span>Présence aux côtés des équipes après le lancement.</span></li>
+          </ul>
+          <p class="price">Rémunération possible en parts ou en partage de revenus.</p>
+        </article>
+        <article class="offer">
+          <p class="tag alt">Par nous</p>
+          <h3>Les produits du studio</h3>
+          <p class="intro">Entre deux projets clients, le studio crée et publie ses propres produits.</p>
+          <ul>
+            <li><b>Mes Proches</b><span>App iOS pour les anniversaires et les fêtes de ses proches.</span></li>
+          </ul>
+          <p class="price">Ce qu'on apprend ici sert aux projets clients.</p>
+        </article>
+      </div>
+
+      <div class="examples-head">
+        <p class="label">Exemples de missions</p>
+        <h3>À quoi ça ressemble, concrètement.</h3>
+      </div>
+      <div class="examples">
+        <article class="ex">
+          <p class="tag">Pour vous · Finance</p>
+          <h4>Préparer une levée de fonds</h4>
+          <p class="sit">Une PME en croissance veut lever 2 M€ mais n'a ni modèle financier ni récit pour les investisseurs.</p>
+          <dl>
+            <div><dt>D · Concevoir</dt><dd>Business plan, scénarios, montant et usage des fonds.</dd></div>
+            <div><dt>G · Fabriquer</dt><dd>Modèle financier, deck, data room, préparation des rendez-vous.</dd></div>
+          </dl>
+          <p class="deliv">Livré : un dossier prêt à présenter, en 6 à 8 semaines.</p>
+        </article>
+        <article class="ex">
+          <p class="tag">Pour vous · Business</p>
+          <h4>Structurer une équipe commerciale</h4>
+          <p class="sit">Un dirigeant vend encore tout lui-même et veut que la croissance ne dépende plus de lui.</p>
+          <dl>
+            <div><dt>D · Concevoir</dt><dd>Cibles, offre, organisation commerciale, objectifs.</dd></div>
+            <div><dt>G · Fabriquer</dt><dd>Process de vente, CRM, recrutement, rituels de pilotage.</dd></div>
+          </dl>
+          <p class="deliv">Livré : une équipe qui tourne et un tableau de bord, en 3 mois.</p>
+        </article>
+        <article class="ex">
+          <p class="tag">Pour vous · Tech</p>
+          <h4>Créer l'app d'un réseau</h4>
+          <p class="sit">Un réseau de points de vente veut garder le lien avec ses clients entre deux visites.</p>
+          <dl>
+            <div><dt>D · Concevoir</dt><dd>Usages clés, parcours, modèle de rétention.</dd></div>
+            <div><dt>G · Fabriquer</dt><dd>Maquettes, développement, test en magasin, publication.</dd></div>
+          </dl>
+          <p class="deliv">Livré : une app publiée sur l'App Store et un premier pilote.</p>
+        </article>
+        <article class="ex">
+          <p class="tag">Pour vous · Lieu</p>
+          <h4>Ouvrir un nouvel espace</h4>
+          <p class="sit">Une entreprise ouvre un showroom ou de nouveaux bureaux et veut un lieu qui raconte sa marque.</p>
+          <dl>
+            <div><dt>D · Concevoir</dt><dd>Usages, concept, budget, planning.</dd></div>
+            <div><dt>G · Fabriquer</dt><dd>Plans, choix des artisans, suivi de chantier, ouverture.</dd></div>
+          </dl>
+          <p class="deliv">Livré : un lieu ouvert, dans le budget.</p>
+        </article>
+        <article class="ex">
+          <p class="tag">Avec vous</p>
+          <h4>Lancer une activité avec un expert</h4>
+          <p class="sit">Un artisan ou un technicien a un savoir-faire rare mais pas d'associé pour en faire une entreprise.</p>
+          <dl>
+            <div><dt>D · Concevoir</dt><dd>Marque, offre, modèle économique.</dd></div>
+            <div><dt>G · Fabriquer</dt><dd>Lancement, premiers clients, organisation.</dd></div>
+          </dl>
+          <p class="deliv">Le studio entre au capital ou partage les revenus.</p>
+        </article>
+        <article class="ex">
+          <p class="tag alt">Par nous</p>
+          <h4>Mes Proches</h4>
+          <p class="sit">Un besoin personnel : ne plus oublier les anniversaires et les fêtes de ses proches.</p>
+          <dl>
+            <div><dt>D · Concevoir</dt><dd>Usage, parcours, design de l'app.</dd></div>
+            <div><dt>G · Fabriquer</dt><dd>Développement iOS, tests, publication.</dd></div>
+          </dl>
+          <p class="deliv">Le terrain d'essai des méthodes du studio.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="realisations" aria-labelledby="real-title" style="padding-top: 24px;">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Réalisations</p>
+        <h2 id="real-title">Ce que le studio a conçu et fabriqué.</h2>
+      </div>
+      <div class="works">
+        <article class="work">
+          <div class="visual v1" aria-hidden="true"><span>Maison Saint O'</span></div>
+          <div class="tags"><span class="tag">Pour vous + Lieu</span><span class="label">Projet 360°</span></div>
+          <h3>Maison Saint O'</h3>
+          <p>Un accompagnement à 360° : de la vision du lieu jusqu'à sa réalisation.</p>
+        </article>
+        <article class="work">
+          <div class="visual v2" aria-hidden="true"><span>Mes Proches</span></div>
+          <div class="tags"><span class="tag alt">Par nous + App</span><span class="label">Application iOS</span></div>
+          <h3>Mes Proches</h3>
+          <p>Une app pour ne plus oublier les anniversaires et les fêtes de ses proches. Imaginée, dessinée et développée par le studio.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="parcours" aria-labelledby="parcours-title" style="padding-top: 24px;">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Projets menés de bout en bout</p>
+        <h2 id="parcours-title">Avant le studio, des entreprises construites de l'intérieur.</h2>
+        <p>Quatre situations, la même partition : décider, puis faire tenir. Les résultats sont ceux obtenus en poste, comme dirigeant ou cofondateur.</p>
+      </div>
+      <div class="cases">
+        <article class="case">
+          <header class="case-head">
+            <span class="when">2014 – 2022 · Croissance</span>
+            <h3>Projexion</h3>
+            <p class="role">Directeur commercial &amp; opérations · 8 ans · comité de direction</p>
+          </header>
+          <div class="case-result"><strong>×4,6</strong><span>de 1,2 M€ à 5,5 M€ de chiffre d'affaires, sans levée de fonds, avec 33 % de marge</span></div>
+        </article>
+        <article class="case">
+          <header class="case-head">
+            <span class="when">2022 – 2023 · Levée &amp; go-to-market</span>
+            <h3>Klareo</h3>
+            <p class="role">Directeur commercial &amp; marketing</p>
+          </header>
+          <div class="case-result"><strong>3 M€</strong><span>levés, 600 k€ de pipe commercial et une part de marché supérieure à 66 % en grande distribution</span></div>
+        </article>
+        <article class="case">
+          <header class="case-head">
+            <span class="when">2023 – 2024 · Retournement</span>
+            <h3>Willing</h3>
+            <p class="role">Directeur Lille</p>
+          </header>
+          <div class="case-result"><strong>−45 % → +35 %</strong><span>de marge en 5 mois, et un chiffre d'affaires passé de 1 M€ à 1,6 M€</span></div>
+        </article>
+        <article class="case">
+          <header class="case-head">
+            <span class="when">2024 – 2025 · Lancement</span>
+            <h3>groove</h3>
+            <p class="role">Cofondateur d'un cabinet de transformation</p>
+          </header>
+          <div class="case-result"><strong>5 clients</strong><span>signés en 8 mois, dont Electro Dépôt, Engie et Kiloutou</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="methode" aria-labelledby="methode-title" style="background: var(--paper-2);">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">La méthode</p>
+        <h2 id="methode-title">Un, deux, trois, quatre.</h2>
+        <p>Chaque projet suit trois temps. On peut s'arrêter à la fin de chacun.</p>
+      </div>
+      <ol class="method">
+        <li>
+          <span class="step">1</span>
+          <h3>Le décompte</h3>
+          <p class="dur">1 à 2 semaines</p>
+          <p>On cadre : le problème, l'ambition, les contraintes, ce qu'on fabrique en premier. Vous repartez avec une feuille de route claire, même si l'on ne continue pas ensemble.</p>
+        </li>
+        <li>
+          <span class="step">2</span>
+          <h3>La répétition</h3>
+          <p class="dur">quelques semaines</p>
+          <p>On prototype et on teste : une maquette, un pilote, une première version. On corrige avant d'investir lourd.</p>
+        </li>
+        <li>
+          <span class="step">3</span>
+          <h3>Le live</h3>
+          <p class="dur">jusqu'au lancement, et après</p>
+          <p>On construit, on lance et on pilote. Le studio reste présent le temps que le projet tienne seul.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="band why" id="nom" aria-labelledby="nom-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Le nom</p>
+        <h2 id="nom-title">Le premier exercice qu'on apprend à la batterie. Et celui qu'on travaille toute sa vie.</h2>
+        <p>Un paradiddle alterne les deux mains sur un même tempo : droite, gauche, droite, droite, puis gauche, droite, gauche, gauche. Aucune main ne domine. Dans un groupe, le batteur est la fondation : tout le monde peut improviser parce que le rythme tient.</p>
+      </div>
+      <div class="hands">
+        <div class="hand">
+          <p class="k">MAIN DROITE</p>
+          <h3>Concevoir</h3>
+          <p>Stratégie, modèle, design. Savoir où aller et à quoi ça doit ressembler.</p>
+        </div>
+        <div class="hand">
+          <p class="k">MAIN GAUCHE</p>
+          <h3>Fabriquer</h3>
+          <p>Organisation, outils, chantier, code. Ce qui transforme une idée en quelque chose qui marche.</p>
+        </div>
+        <div class="hand">
+          <p class="k">LE TEMPO</p>
+          <h3>Faire tenir</h3>
+          <p>Un rythme tenu jusqu'au lancement, et après. Un projet ne s'arrête pas à la livraison.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="fondations" aria-labelledby="fond-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="label">Les fondations · Paris → Vancouver → Johannesburg → Lille</p>
+        <h2 id="fond-title">Vingt ans de terrain sous chaque projet.</h2>
+        <p>De l'événementiel mondial à la direction d'entreprises, en passant par la publicité et la transformation. Chaque étape a ajouté une couche.</p>
+      </div>
+      <ol class="timeline" aria-label="Étapes du parcours" style="margin-top: 0;">
+        <li><span class="when">2007 – 2010</span><span class="what"><b>Sport Events International</b> <span>· RWC 2007, VANOC 2010, FIFA 2010</span></span></li>
+        <li><span class="when">2008 – 2010</span><span class="what"><b>DDB Canada</b> <span>· stratégie digitale et copywriting</span></span></li>
+        <li><span class="when">2011 – 2014</span><span class="what"><b>altima° – Accenture</b> <span>· senior project manager, management de la transition</span></span></li>
+        <li><span class="when">2014 – 2022</span><span class="what"><b>Projexion</b> <span>· directeur commercial et opérations, comité de direction</span></span></li>
+        <li><span class="when">2022 – 2023</span><span class="what"><b>Klareo</b> <span>· directeur commercial et marketing</span></span></li>
+        <li><span class="when">2023 – 2024</span><span class="what"><b>Willing</b> <span>· directeur Lille, retournement</span></span></li>
+        <li><span class="when">2024 – 2025</span><span class="what"><b>groove</b> <span>· cofondateur d'un cabinet de transformation</span></span></li>
+        <li class="now"><span class="when">Aujourd'hui</span><span class="what"><b>Paradiddle</b> <span>· studio de création</span></span></li>
+      </ol>
+      <div class="sectors" style="margin-top: 48px;" aria-label="Références par secteur">
+        <div class="sector"><b>Retail</b><span>Leroy Merlin, Kingfisher, Boulanger, Chronodrive, E.Leclerc, Auchan, Decathlon, Electro Dépôt</span></div>
+        <div class="sector"><b>Assurance &amp; santé</b><span>AXA, Cardif, Gan</span></div>
+        <div class="sector"><b>Banque</b><span>Caisse d'Épargne, Cofidis</span></div>
+        <div class="sector"><b>Industrie</b><span>Paul, Bonduelle, Roquette</span></div>
+        <div class="sector"><b>Énergie &amp; logiciel</b><span>Boralex, Klareo</span></div>
+        <div class="sector"><b>Mode</b><span>La Redoute, Vertbaudet, Jules, Kiabi</span></div>
+        <div class="sector"><b>Sport</b><span>FIFA 2010, VANOC 2010, Rugby World Cup 2007</span></div>
+        <div class="sector"><b>Publicité, conseil &amp; non lucratif</b><span>Accenture, Tribal DDB, Willing, Projexion, Commission canadienne du tourisme</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="label">Contact</p>
+        <h2 id="contact-title">On lance le décompte ?</h2>
+        <p class="sub">Racontez où en est votre projet. Un premier échange de 30 minutes suffit pour savoir si l'on joue ensemble. Si le studio n'est pas le bon partenaire, il vous le dira dès ce premier appel.</p>
+      </div>
+      <div class="coords">
+        <div class="coord"><span class="v" id="mail">benoit@paradiddle.fr</span><button class="copy" type="button" data-copy="mail">Copier</button></div>
+        <div class="coord"><span class="v" id="tel">06 22 70 50 21</span><button class="copy" type="button" data-copy="tel">Copier</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+
+
+<section class="band legal" id="mentions-legales" aria-labelledby="legal-title">
+  <div class="wrap">
+    <details>
+      <summary id="legal-title">Mentions légales</summary>
+      <div class="legal-body">
+        <p><b>Éditeur du site</b> : Benoît Schoeffel, entrepreneur individuel (micro-entreprise), exerçant sous le nom commercial Paradiddle. Adresse : 14 rue de l'Écaillon, 59520 Marquette-lez-Lille. SIRET : 100 870 328 00018. Contact : benoit@paradiddle.fr.</p>
+        <p><b>Directeur de la publication</b> : Benoît Schoeffel.</p>
+        <p><b>Hébergement</b> : GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, États-Unis.</p>
+        <p><b>Données personnelles</b> : ce site ne dépose aucun cookie et ne collecte aucune donnée. Les informations transmises par e-mail servent uniquement à répondre à votre demande.</p>
+        <p><b>Propriété intellectuelle</b> : les textes, le logo et la charte graphique de Paradiddle sont la propriété de Benoît Schoeffel. Les marques et logos cités dans les références appartiennent à leurs propriétaires respectifs.</p>
+      </div>
+    </details>
+  </div>
+</section>
+<footer class="band">
+  <div class="wrap" style="align-items: end;">
+    <span class="foot-logo" role="img" aria-label="Paradiddle"><span class="wm">Paradiddle</span><span class="wm-rule"></span><span class="wm-st"><i>R</i><span>L</span><span>R</span><span>R</span><i>L</i><span>R</span><span>L</span><span>L</span></span></span>
+    <span>Studio de création · Benoît Schoeffel · Lille</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var notes = Array.prototype.slice.call(document.querySelectorAll('#staff .note'));
+  var playBtn = document.getElementById('play');
+  var bpm = document.getElementById('bpm');
+  var bpmOut = document.getElementById('bpmOut');
+  var ctx = null, timer = null, step = 0, playing = false;
+
+  function click(accent, left) {
+    if (!ctx) return;
+    var t = ctx.currentTime;
+    var len = 0.09;
+    var buf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * len), ctx.sampleRate);
+    var d = buf.getChannelData(0);
+    for (var i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / d.length, 3);
+    var src = ctx.createBufferSource(); src.buffer = buf;
+    var bp = ctx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = left ? 1800 : 2300; bp.Q.value = 0.9;
+    var g = ctx.createGain(); g.gain.setValueAtTime(accent ? 0.9 : 0.4, t); g.gain.exponentialRampToValueAtTime(0.001, t + len);
+    var pan = ctx.createStereoPanner ? ctx.createStereoPanner() : null;
+    src.connect(bp); bp.connect(g);
+    if (pan) { pan.pan.value = left ? -0.4 : 0.4; g.connect(pan); pan.connect(ctx.destination); } else { g.connect(ctx.destination); }
+    src.start(t);
+  }
+
+  function tick() {
+    notes.forEach(function (n) { n.classList.remove('on'); });
+    var n = notes[step];
+    n.classList.add('on');
+    click(n.classList.contains('accent'), n.querySelector('.hit').textContent === 'G');
+    step = (step + 1) % notes.length;
+  }
+
+  function interval() { return 60000 / Number(bpm.value) / 2; }
+
+  function start() {
+    try { ctx = ctx || new (window.AudioContext || window.webkitAudioContext)(); if (ctx.state === 'suspended') ctx.resume(); } catch (e) { ctx = null; }
+    playing = true; step = 0; tick();
+    timer = setInterval(tick, interval());
+    playBtn.textContent = '■ Arrêter'; playBtn.setAttribute('aria-pressed', 'true');
+  }
+  function stop() {
+    playing = false; clearInterval(timer); timer = null;
+    notes.forEach(function (n) { n.classList.remove('on'); });
+    playBtn.textContent = '▶ Écouter le paradiddle'; playBtn.setAttribute('aria-pressed', 'false');
+  }
+  playBtn.addEventListener('click', function () { playing ? stop() : start(); });
+  bpm.addEventListener('input', function () {
+    bpmOut.textContent = bpm.value;
+    if (playing) { clearInterval(timer); timer = setInterval(tick, interval()); }
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.copy'), function (b) {
+    b.addEventListener('click', function () {
+      var el = document.getElementById(b.getAttribute('data-copy'));
+      var txt = el.textContent;
+      var done = function () { b.textContent = 'Copié'; setTimeout(function () { b.textContent = 'Copier'; }, 1600); };
+      var fallback = function () { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Sélectionné'; setTimeout(function () { b.textContent = 'Copier'; }, 1600); };
+      try { navigator.clipboard.writeText(txt).then(done, fallback); } catch (e) { fallback(); }
+    });
+  });
+})();
+
+
+</script>
+</body>
+</html>
