@@ -176,6 +176,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .flow-steps .mono { color: var(--accent-ink); }
 .flow-steps h3 { font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-top: 6px; }
 .flow-steps .q { margin-top: 8px; font-size: 18px; line-height: 1.4; }
+.flow-steps .when { margin-top: 18px; font: 600 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+.flow-steps .ex { list-style: none; margin: 8px 0 0; padding: 0; display: grid; gap: 8px; font-size: 15px; line-height: 1.45; }
+.flow-steps .ex li { padding-left: 14px; position: relative; }
+.flow-steps .ex li::before { content: "→"; position: absolute; left: 0; color: var(--muted); font-size: 12px; top: 2px; }
 .flow-steps .d { margin-top: 12px; font-size: 14px; color: var(--muted); line-height: 1.5; }
 @media (max-width: 760px) {
   .flow-line, .flow-ends { display: none; }
@@ -354,9 +358,9 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
           <div class="flow-ends mono" aria-hidden="true"><span>Très en amont</span><span>Jusqu'à la réalisation</span></div>
           <div class="flow-line" aria-hidden="true"><i></i><i></i><i></i><b class="flow-ball"></b></div>
           <ol class="flow-steps">
-            <li><span class="mono">01</span><h3>Idée et business model</h3><p class="q">Quoi vendre, à qui, à quel prix&nbsp;?</p><p class="d">Thèse et opportunité · Modèle économique · Prix · Positionnement et offre · Naming et marque · Go-to-market</p></li>
-            <li><span class="mono">02</span><h3>Investissement</h3><p class="q">Faut-il investir, et combien&nbsp;?</p><p class="d">Business plan · Valorisation · Levée de fonds · Due diligence · M&amp;A</p></li>
-            <li><span class="mono">03</span><h3>Réalisation</h3><p class="q">Comment le faire tourner&nbsp;?</p><p class="d">Développement commercial · Organisation et opérations · Apps et outils · Lieux · Lancement · Pilotage et marges</p></li>
+            <li><span class="mono">01</span><h3>Idée et business model</h3><p class="q">Quoi vendre, à qui, à quel prix&nbsp;?</p><p class="d">Thèse et opportunité · Modèle économique · Prix · Positionnement et offre · Naming et marque · Go-to-market</p><p class="when">On nous appelle quand&nbsp;:</p><ul class="ex"><li>Vous avez une idée et voulez savoir si elle peut faire vivre une entreprise.</li><li>Vous lancez une nouvelle offre et hésitez sur le prix.</li><li>Votre marque ne dit plus ce que vous faites.</li></ul></li>
+            <li><span class="mono">02</span><h3>Investissement</h3><p class="q">Faut-il investir, et combien&nbsp;?</p><p class="d">Business plan · Valorisation · Levée de fonds · Due diligence · M&amp;A</p><p class="when">On nous appelle quand&nbsp;:</p><ul class="ex"><li>Vous préparez une levée et votre business plan doit tenir face aux investisseurs.</li><li>Une reprise se présente et vous voulez savoir ce que vaut la cible.</li><li>Vous voulez céder, et préparer le terrain.</li></ul></li>
+            <li><span class="mono">03</span><h3>Réalisation</h3><p class="q">Comment le faire tourner&nbsp;?</p><p class="d">Développement commercial · Organisation et opérations · Apps et outils · Lieux · Lancement · Pilotage et marges</p><p class="when">On nous appelle quand&nbsp;:</p><ul class="ex"><li>Vos ventes plafonnent ou vos marges fondent.</li><li>Vos équipes perdent du temps dans des outils mal pensés.</li><li>Vous ouvrez un lieu ou lancez un produit, et il faut que ça tourne dès le premier jour.</li></ul></li>
           </ol>
         </div>
         <p class="trio-line">Nous pouvons intervenir à n'importe quelle étape. Le plus tôt est le mieux.</p>
