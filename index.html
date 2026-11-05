@@ -133,7 +133,8 @@ section.s { border-top: 1.5px solid var(--ink); padding: 28px 0 88px; }
 
 /* Pied de page */
 .legal { padding: 32px 0 0; }
-.legal summary { cursor: pointer; font: 500 13px var(--mono); }
+.legal summary, .xp summary { cursor: pointer; font: 500 13px var(--mono); }
+.xp { margin-top: 40px; }
 .legal-body { display: grid; gap: 8px; margin-top: 14px; font-size: 14px; color: var(--muted); max-width: 80ch; }
 footer .wrap { display: flex; justify-content: space-between; align-items: end; gap: 16px; flex-wrap: wrap; padding-top: 48px; padding-bottom: 40px; font-size: 14px; color: var(--muted); }
 .foot-logo { display: inline-grid; gap: 6px; color: var(--ink); }
@@ -386,7 +387,18 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
           <p>Il aborde chaque projet comme un musicien&nbsp;: de la rigueur, de l'écoute, et l'envie de faire sonner le collectif. Paradiddle en est la somme.</p>
         </div>
         <p class="sign"><img class="avatar" src="assets/benoit.jpg" alt="Benoît Schoeffel" width="64" height="64"><b>Benoît Schoeffel</b><span class="mono">Fondateur</span><a class="li-pill" href="https://www.linkedin.com/in/bschoeffel/" target="_blank" rel="noopener" aria-label="Profil LinkedIn de Benoît Schoeffel (nouvel onglet)">LinkedIn&nbsp;↗</a></p>
-
+        <details class="xp">
+          <summary>20 ans d'expertise multisectorielle</summary>
+          <div class="legal-body">
+            <p><b>2007–2010 · Événements sportifs mondiaux</b> : opérations pour la Coupe du monde de rugby 2007 (Paris), les Jeux olympiques d'hiver de Vancouver 2010 et la Coupe du monde FIFA 2010 (Johannesburg).</p>
+            <p><b>2008–2010 · DDB Canada</b> : stratégie digitale pour la Commission canadienne du tourisme et les Jeux de Vancouver.</p>
+            <p><b>2011–2014 · Accenture</b> : gestion de projet et management de transition pour Chronodrive et AXA.</p>
+            <p><b>2014–2021 · Projexion</b> : membre du comité de direction. Chiffre d'affaires de 1,2 à 5,5&nbsp;M€ sans levée de fonds, 33&nbsp;% de marge brute. Clients&nbsp;: Leroy Merlin, Auchan, Kingfisher, Boulanger, La Redoute, Kiabi, Cofidis, Caisse d'Épargne, Roquette, Bonduelle, Boralex.</p>
+            <p><b>2022 · Klareo</b> : passage de start-up à scale-up. 600&nbsp;k€ de pipe en 6 mois, puis une levée de 3&nbsp;M€.</p>
+            <p><b>2023–2024 · Willing</b> : retournement du bureau de Lille en 5 mois. Marge brute de −45&nbsp;% à +35&nbsp;%, chiffre d'affaires de 0,7 à 1,6&nbsp;M€, de 7 à 16 clients actifs.</p>
+            <p><b>2024–2025 · groove</b> : cofondateur d'un cabinet de conseil et d'exécution. Clients&nbsp;: Electro Dépôt, Engie, Kiloutou, Klareo.</p>
+          </div>
+        </details>
       </div>
     </section>
   </div>
