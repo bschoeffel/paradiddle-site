@@ -271,11 +271,8 @@ nav a:hover { color: var(--accent-ink); }
 .rules sup { font-size: .55em; line-height: 0; vertical-align: super; }
 
 /* Liens projets avec icône */
-.works { list-style: none; margin: 0; padding: 0; display: grid; gap: 56px; }
-.work { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px; align-items: start; }
-.shot { display: block; border: .5px solid #555; border-radius: 6px; overflow: hidden; line-height: 0; transition: transform .25s ease; }
-.shot:hover { transform: translateY(-3px); }
-.shot img { width: 100%; height: auto; display: block; }
+.works { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px; max-width: 62ch; }
+.work { padding-bottom: 32px; border-bottom: .5px solid #E8E8E4; }
 .work h3 { margin: 0; font-size: 22px; font-weight: 700; }
 .work .why { margin: 10px 0 0; font-size: 17px; }
 .work .what { margin: 6px 0 0; font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
@@ -286,7 +283,6 @@ nav a:hover { color: var(--accent-ink); }
 .st-l { font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: 10px; }
 .work .st i { display: inline-block; font: 600 10px var(--mono); font-style: normal; padding: 2px 5px; margin-right: 3px; border: 1px solid var(--line); color: #9A9A96; border-radius: 3px; }
 .work .st i.on { background: var(--ink); border-color: var(--ink); color: #fff; }
-@media (max-width: 760px) { .work { grid-template-columns: minmax(0, 1fr); gap: 18px; } .works { gap: 44px; } }
 .proj { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; }
 .proj img { width: 24px; height: 24px; border-radius: 6px; flex: none; }
 .proj:hover { color: var(--accent-ink); }
@@ -392,7 +388,6 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
       <div class="s-body">
         <ul class="works">
           <li class="work">
-            <a class="shot" href="https://mesproches.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/projets/mesproches-ecran.jpg" alt="" width="1200" height="750" loading="lazy"></a>
             <div class="work-txt">
               <h3><a class="proj" href="https://mesproches.app" target="_blank" rel="noopener"><img src="assets/projets/mesproches.png" alt="" width="24" height="24">Mes Proches<span aria-hidden="true">&nbsp;↗</span></a></h3>
               <p class="why">Prendre soin de ceux qui comptent vraiment.</p>
@@ -403,7 +398,6 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
             </div>
           </li>
           <li class="work">
-            <a class="shot" href="https://maisonsainto.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/projets/maisonsainto-ecran.jpg" alt="" width="1200" height="750" loading="lazy"></a>
             <div class="work-txt">
               <h3><a class="proj" href="https://maisonsainto.com" target="_blank" rel="noopener"><img src="assets/projets/maisonsainto.svg" alt="" width="24" height="24">Maison Saint O'<span aria-hidden="true">&nbsp;↗</span></a></h3>
               <p class="why">Un lieu près de Tournai pour prendre du recul&nbsp;: séminaires, stages, tournages.</p>
