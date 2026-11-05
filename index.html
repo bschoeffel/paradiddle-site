@@ -258,6 +258,9 @@ nav a:hover { color: var(--accent-ink); }
 
 /* Cercles accentués en violet prune */
 .hits .hit.on { background: var(--prune); border-color: var(--prune); color: #fff; }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.rules sup { font-size: .55em; line-height: 0; vertical-align: super; }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
@@ -334,7 +337,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
       <div class="s-body">
         <ol class="rules">
           <li>Le goût n'est pas une question de moyens.</li>
-          <li>Demi-décision = bordel au carré.</li>
+          <li><span aria-hidden="true">½&nbsp;décision = bordel<sup>2</sup></span><span class="sr">Demi-décision égale bordel au carré.</span></li>
           <li>Nous disons ce que nous pensons, même quand ça ne plaît pas.</li>
           <li>Un projet est fini quand il tient sans nous.</li>
           <li>Tenir le rythme vaut mieux que jouer fort.</li>
