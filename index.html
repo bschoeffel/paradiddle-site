@@ -283,6 +283,8 @@ nav a:hover { color: var(--accent-ink); }
 .st-l { font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: 10px; }
 .work .st i { display: inline-block; font: 600 10px var(--mono); font-style: normal; padding: 2px 5px; margin-right: 3px; border: 1px solid var(--line); color: #9A9A96; border-radius: 3px; }
 .work .st i.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.verbs { display: flex; flex-wrap: wrap; gap: 6px 0; margin: 0 0 36px; font: 600 clamp(13px, 1.3vw, 16px) var(--mono); letter-spacing: .14em; text-transform: uppercase; }
+.verbs span + span::before { content: "·"; color: var(--accent); margin: 0 .7em; }
 .s-sub { margin: 0 0 28px; font-size: clamp(19px, 1.8vw, 22px); color: var(--muted); }
 .proj { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; }
 .proj img { width: 24px; height: 24px; border-radius: 6px; flex: none; }
@@ -347,6 +349,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
       <div class="s-head"><span class="mono num">01</span><h2 id="studio-title">Approche</h2></div>
       <div class="s-body">
         <p class="s-sub">De l'idée à la réalisation. Touche-à-tout, et c'est voulu&nbsp;: un projet ne se découpe pas en silos.</p>
+        <p class="verbs" aria-label="Penser, chiffrer, dessiner, coder, vendre, opérer."><span>Penser</span><span>Chiffrer</span><span>Dessiner</span><span>Coder</span><span>Vendre</span><span>Opérer</span></p>
         <div class="flow" data-step="0">
           <div class="flow-ends mono" aria-hidden="true"><span>Très en amont</span><span>Jusqu'à la réalisation</span></div>
           <div class="flow-line" aria-hidden="true"><i></i><i></i><i></i><b class="flow-ball"></b></div>
