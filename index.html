@@ -269,10 +269,17 @@ nav a:hover { color: var(--accent-ink); }
 /* Encart références, même principe que les mentions légales */
 .refs-box { margin-top: 40px; }
 .refs-box summary { cursor: pointer; font: 500 13px var(--mono); }
-.refs-box img { display: block; width: 100%; height: auto; margin-top: 18px; border: 0.5px solid #E4E4E0; }
+
 
 .index td.n .why { display: block; }
 .index td.n .what { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
+
+/* Logos des références, un par un */
+.logos { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0 32px; margin-top: 18px; }
+.lg { border-top: 0.5px solid #E4E4E0; padding: 14px 0 22px; }
+.lg h4 { margin: 0 0 14px; font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.lg-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; }
+.lg-row img { display: block; height: 32px; width: auto; max-width: 120px; object-fit: contain; margin: 0; border: 0; }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
@@ -380,7 +387,18 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
         <p class="sign"><b>Benoît Schoeffel</b><span class="mono">Fondateur</span><a class="li-pill" href="https://www.linkedin.com/in/bschoeffel/" target="_blank" rel="noopener" aria-label="Profil LinkedIn de Benoît Schoeffel (nouvel onglet)">LinkedIn&nbsp;↗</a></p>
         <details class="refs-box">
           <summary>20 ans d'expertise multisectorielle</summary>
-          <img src="assets/references.jpg" width="1744" height="948" loading="lazy" alt="Références par secteur. Sport : FIFA World Cup 2010, Vancouver 2010, Rugby World Cup 2007. Retail : Leroy Merlin, Kingfisher, Boulanger, Chronodrive, E.Leclerc, Auchan, Decathlon, Electro Dépôt. Énergie : Boralex. Logiciel : Klareo. Assurance et santé : AXA, Cardif, Gan. Industrie : Paul, Bonduelle, Roquette. Banque : Caisse d'Épargne, Cofidis. Mode : La Redoute, Vertbaudet, Jules, Kiabi. Non lucratif : Commission canadienne du tourisme. Publicité, conseil et agence : Accenture, Tribal DDB, Willing, Projexion.">
+          <div class="logos">
+            <div class="lg"><h4>Sport</h4><div class="lg-row"><img src="assets/references/fifa-2010.png" alt="FIFA World Cup 2010" width="94" height="92" loading="lazy"><img src="assets/references/vancouver-2010.png" alt="Vancouver 2010" width="81" height="89" loading="lazy"><img src="assets/references/rugby-world-cup-2007.png" alt="Rugby World Cup 2007" width="123" height="81" loading="lazy"></div></div>
+            <div class="lg"><h4>Retail</h4><div class="lg-row"><img src="assets/references/leroy-merlin.png" alt="Leroy Merlin" width="106" height="66" loading="lazy"><img src="assets/references/kingfisher.png" alt="Kingfisher" width="152" height="51" loading="lazy"><img src="assets/references/boulanger.png" alt="Boulanger" width="160" height="32" loading="lazy"><img src="assets/references/chronodrive.png" alt="Chronodrive" width="158" height="37" loading="lazy"><img src="assets/references/e-leclerc.png" alt="E.Leclerc" width="70" height="71" loading="lazy"><img src="assets/references/auchan.png" alt="Auchan" width="163" height="46" loading="lazy"><img src="assets/references/decathlon.png" alt="Decathlon" width="167" height="32" loading="lazy"><img src="assets/references/electro-depot.png" alt="Electro Dépôt" width="165" height="52" loading="lazy"></div></div>
+            <div class="lg"><h4>Énergie</h4><div class="lg-row"><img src="assets/references/boralex.png" alt="Boralex" width="196" height="55" loading="lazy"></div></div>
+            <div class="lg"><h4>Logiciel</h4><div class="lg-row"><img src="assets/references/klareo.png" alt="Klareo" width="192" height="43" loading="lazy"></div></div>
+            <div class="lg"><h4>Assurance &amp; santé</h4><div class="lg-row"><img src="assets/references/axa.png" alt="AXA" width="95" height="83" loading="lazy"><img src="assets/references/cardif.png" alt="Cardif" width="140" height="42" loading="lazy"><img src="assets/references/gan.png" alt="Gan" width="96" height="94" loading="lazy"></div></div>
+            <div class="lg"><h4>Industrie</h4><div class="lg-row"><img src="assets/references/paul.png" alt="Paul" width="83" height="82" loading="lazy"><img src="assets/references/bonduelle.png" alt="Bonduelle" width="129" height="60" loading="lazy"><img src="assets/references/roquette.png" alt="Roquette" width="143" height="68" loading="lazy"></div></div>
+            <div class="lg"><h4>Banque</h4><div class="lg-row"><img src="assets/references/caisse-epargne.png" alt="Caisse d'Épargne" width="118" height="67" loading="lazy"><img src="assets/references/cofidis.png" alt="Cofidis" width="130" height="80" loading="lazy"></div></div>
+            <div class="lg"><h4>Mode</h4><div class="lg-row"><img src="assets/references/la-redoute.png" alt="La Redoute" width="82" height="83" loading="lazy"><img src="assets/references/jules.png" alt="Jules" width="120" height="35" loading="lazy"><img src="assets/references/kiabi.png" alt="Kiabi" width="141" height="52" loading="lazy"><img src="assets/references/vertbaudet.png" alt="Vertbaudet" width="228" height="35" loading="lazy"></div></div>
+            <div class="lg"><h4>Non lucratif</h4><div class="lg-row"><img src="assets/references/commission-canadienne-tourisme.png" alt="Commission canadienne du tourisme" width="304" height="67" loading="lazy"></div></div>
+            <div class="lg"><h4>Publicité, conseil &amp; agence</h4><div class="lg-row"><img src="assets/references/accenture.png" alt="Accenture" width="227" height="66" loading="lazy"><img src="assets/references/tribal-ddb.png" alt="Tribal DDB" width="245" height="84" loading="lazy"><img src="assets/references/willing.png" alt="Willing" width="141" height="51" loading="lazy"><img src="assets/references/projexion.png" alt="Projexion" width="153" height="33" loading="lazy"></div></div>
+          </div>
         </details>
       </div>
     </section>
