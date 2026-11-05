@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Paradiddle · Studio de projets</title>
-<meta name="description" content="Paradiddle fabrique des choses utiles, qui tiennent. Studio de projets, de l'idée et du business model jusqu'à la réalisation. Fondé à Lille par Benoît Schoeffel.">
+<meta name="description" content="Paradiddle conçoit et fabrique des choses utiles, qui tiennent. Studio de projets, de l'idée et du business model jusqu'à la réalisation. Fondé à Lille par Benoît Schoeffel.">
 <meta property="og:title" content="Paradiddle · Studio de projets">
-<meta property="og:description" content="Paradiddle fabrique des choses utiles, qui tiennent. Studio de projets, de l'idée et du business model jusqu'à la réalisation. Fondé à Lille par Benoît Schoeffel.">
+<meta property="og:description" content="Paradiddle conçoit et fabrique des choses utiles, qui tiennent. Studio de projets, de l'idée et du business model jusqu'à la réalisation. Fondé à Lille par Benoît Schoeffel.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://paradiddle.fr/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Paradiddle fabrique des choses utiles, qui tiennent.">
+<meta property="og:image:alt" content="Paradiddle conçoit et fabrique des choses utiles, qui tiennent.">
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:url" content="https://paradiddle.fr/">
 <meta name="theme-color" content="#FFFFFF">
@@ -271,6 +271,22 @@ nav a:hover { color: var(--accent-ink); }
 .rules sup { font-size: .55em; line-height: 0; vertical-align: super; }
 
 /* Liens projets avec icône */
+.works { list-style: none; margin: 0; padding: 0; display: grid; gap: 56px; }
+.work { display: grid; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr); gap: 32px; align-items: start; }
+.shot { display: block; border: .5px solid #555; border-radius: 6px; overflow: hidden; line-height: 0; transition: transform .25s ease; }
+.shot:hover { transform: translateY(-3px); }
+.shot img { width: 100%; height: auto; display: block; }
+.work h3 { margin: 0; font-size: 22px; font-weight: 700; }
+.work .why { margin: 10px 0 0; font-size: 17px; }
+.work .what { margin: 6px 0 0; font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.work .lbl { margin: 22px 0 8px; font: 600 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+.tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.tags li { font-size: 14px; padding: 3px 10px; border: .5px solid #555; border-radius: 999px; }
+.work .st { margin: 18px 0 0; display: flex; align-items: center; gap: 0; }
+.st-l { font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-right: 10px; }
+.work .st i { display: inline-block; font: 600 10px var(--mono); font-style: normal; padding: 2px 5px; margin-right: 3px; border: 1px solid var(--line); color: #9A9A96; border-radius: 3px; }
+.work .st i.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+@media (max-width: 760px) { .work { grid-template-columns: minmax(0, 1fr); gap: 18px; } .works { gap: 44px; } }
 .proj { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; }
 .proj img { width: 24px; height: 24px; border-radius: 6px; flex: none; }
 .proj:hover { color: var(--accent-ink); }
@@ -315,7 +331,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   <div class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <h1 id="hero-title" class="manifesto">
-        <span class="m1">Paradiddle fabrique des choses utiles, qui <em>tiennent</em>.</span>
+        <span class="m1">Paradiddle conçoit et fabrique des choses utiles, qui <em>tiennent</em>.</span>
       </h1>
       <p class="lede">Studio de projets, de l'idée et du business model jusqu'à la réalisation. Fondé à Lille par Benoît Schoeffel.</p>
     </section>
@@ -374,13 +390,30 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     <section class="s" id="index" aria-labelledby="index-title">
       <div class="s-head"><span class="mono num">04</span><h2 id="index-title">Projets</h2></div>
       <div class="s-body">
-        <table class="index">
-          <thead><tr><th scope="col">Projet</th><th scope="col">Nature</th><th scope="col">Étapes</th></tr></thead>
-          <tbody>
-            <tr><td class="p"><a class="proj" href="https://mesproches.app" target="_blank" rel="noopener"><img src="assets/projets/mesproches.png" alt="" width="24" height="24">Mes Proches<span aria-hidden="true">&nbsp;↗</span></a></td><td class="n"><span class="why">Prendre soin de ceux qui comptent vraiment.</span><span class="what">App iOS · par nous</span></td><td class="st" aria-label="Étapes 01, 02, 03"><i class="on">01</i><i class="on">02</i><i class="on">03</i></td></tr>
-            <tr><td class="p"><a class="proj" href="https://maisonsainto.com" target="_blank" rel="noopener"><img src="assets/projets/maisonsainto.svg" alt="" width="24" height="24">Maison Saint O'<span aria-hidden="true">&nbsp;↗</span></a></td><td class="n"><span class="why">Un lieu près de Tournai pour prendre du recul&nbsp;: séminaires, stages, tournages.</span><span class="what">Structuration du projet avec l'un des associés, puis création du site web · pour vous</span></td><td class="st" aria-label="Étapes 01, 03"><i class="on">01</i><i>02</i><i class="on">03</i></td></tr>
-          </tbody>
-        </table>
+        <ul class="works">
+          <li class="work">
+            <a class="shot" href="https://mesproches.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/projets/mesproches-ecran.jpg" alt="" width="1200" height="750" loading="lazy"></a>
+            <div class="work-txt">
+              <h3><a class="proj" href="https://mesproches.app" target="_blank" rel="noopener"><img src="assets/projets/mesproches.png" alt="" width="24" height="24">Mes Proches<span aria-hidden="true">&nbsp;↗</span></a></h3>
+              <p class="why">Prendre soin de ceux qui comptent vraiment.</p>
+              <p class="what">App iOS · par nous</p>
+              <p class="lbl">Notre intervention</p>
+              <ul class="tags"><li>Analyse de marché</li><li>Business model</li><li>Prototypage</li><li>UX et direction artistique</li><li>Développement</li></ul>
+              <p class="st" aria-label="Étapes 01, 02, 03"><span class="st-l" aria-hidden="true">Étapes</span><i class="on">01</i><i class="on">02</i><i class="on">03</i></p>
+            </div>
+          </li>
+          <li class="work">
+            <a class="shot" href="https://maisonsainto.com" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><img src="assets/projets/maisonsainto-ecran.jpg" alt="" width="1200" height="750" loading="lazy"></a>
+            <div class="work-txt">
+              <h3><a class="proj" href="https://maisonsainto.com" target="_blank" rel="noopener"><img src="assets/projets/maisonsainto.svg" alt="" width="24" height="24">Maison Saint O'<span aria-hidden="true">&nbsp;↗</span></a></h3>
+              <p class="why">Un lieu près de Tournai pour prendre du recul&nbsp;: séminaires, stages, tournages.</p>
+              <p class="what">Lieu · pour vous</p>
+              <p class="lbl">Notre intervention</p>
+              <ul class="tags"><li>Cadrage</li><li>Charte graphique</li><li>Logo</li><li>UX</li><li>Développement du site</li></ul>
+              <p class="st" aria-label="Étapes 01, 03"><span class="st-l" aria-hidden="true">Étapes</span><i class="on">01</i><i>02</i><i class="on">03</i></p>
+            </div>
+          </li>
+        </ul>
       </div>
     </section>
 
