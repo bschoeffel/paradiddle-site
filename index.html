@@ -197,21 +197,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .sign { flex-wrap: wrap; align-items: center; }
 .li-pill { display: inline-flex; align-items: center; padding: 5px 12px; border: 1.5px solid var(--ink); border-radius: 999px; font: 600 13px var(--sans); text-decoration: none; line-height: 1; }
 .avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; filter: grayscale(1) contrast(1.05); }
-.xp { margin-top: 64px; padding-top: 28px; border-top: .5px solid #555; max-width: 860px; }
-.xp-title { font: 700 clamp(24px, 2.6vw, 32px)/1.15 var(--sans); letter-spacing: -.01em; margin: 0; text-wrap: balance; }
-.xp-route { color: var(--muted); margin: 10px 0 0; }
-.xp-figs { list-style: none; margin: 32px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: .5px solid #555; }
-.xp-figs li { display: grid; align-content: start; gap: 6px; padding: 18px 16px 18px 0; border-bottom: .5px solid #E8E8E4; }
-.xp-figs b { font: 800 clamp(28px, 3.4vw, 42px)/1 var(--sans); letter-spacing: -.02em; font-variant-numeric: tabular-nums; white-space: nowrap; }
-.xp-figs li:nth-child(-n+3) b { color: var(--accent); }
-.xp-figs span { font-size: 14px; line-height: 1.4; color: var(--muted); max-width: 26ch; }
-.xp-story { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 26px; }
-.xp-story li { display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 20px; }
-.xp-story li > .mono { padding-top: 4px; color: var(--accent-ink); }
-.xp-story h4 { margin: 0 0 4px; font: 700 19px/1.3 var(--sans); }
-.xp-story p { margin: 0; color: var(--muted); font-size: 16px; line-height: 1.6; max-width: 62ch; }
-.xp-story li:last-child h4 { color: var(--accent); }
-@media (max-width: 620px) { .xp-figs { grid-template-columns: repeat(2, minmax(0, 1fr)); } .xp-figs b { white-space: normal; } .xp-story li { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
 .li-pill:hover { background: var(--ink); color: #fff; }
 
 
@@ -402,25 +387,6 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
         </div>
         <p class="sign"><img class="avatar" src="assets/benoit.jpg" alt="Benoît Schoeffel" width="64" height="64"><b>Benoît Schoeffel</b><span class="mono">Fondateur</span><a class="li-pill" href="https://www.linkedin.com/in/bschoeffel/" target="_blank" rel="noopener" aria-label="Profil LinkedIn de Benoît Schoeffel (nouvel onglet)">LinkedIn&nbsp;↗</a></p>
 
-        <div class="xp" aria-labelledby="xp-title">
-          <h3 id="xp-title" class="xp-title">20 ans d'expertise multisectorielle</h3>
-          <p class="mono xp-route">Paris → Vancouver → Johannesburg → Lille · 2007–2026</p>
-          <ul class="xp-figs">
-            <li><b>×4,6</b><span>croissance du chiffre d'affaires de Projexion, sans levée de fonds</span></li>
-            <li><b>3&nbsp;M€</b><span>levés pour Klareo</span></li>
-            <li><b>+35&nbsp;%</b><span>de marge chez Willing, contre −45&nbsp;% cinq mois plus tôt</span></li>
-            <li><b>3</b><span>opérations de M&amp;A</span></li>
-            <li><b>20+</b><span>clients grands comptes</span></li>
-            <li><b>10</b><span>secteurs, du sport à l'énergie</span></li>
-          </ul>
-          <ol class="xp-story">
-            <li><span class="mono">2007–2010</span><div><h4>Livrer à date fixe, devant le monde entier</h4><p>Ses débuts se font dans l'événementiel sportif mondial&nbsp;: la Coupe du monde de rugby 2007 à Paris, les Jeux olympiques de Vancouver 2010, la Coupe du monde de football 2010 à Johannesburg. Une école de l'exécution, où l'échéance ne bouge pas.</p></div></li>
-            <li><span class="mono">2008–2014</span><div><h4>Comprendre les marques</h4><p>Stratégie digitale chez DDB Canada, où une campagne internationale est primée, puis pilotage de projets de transformation chez altima°&nbsp;–&nbsp;Accenture, pour Chronodrive ou AXA.</p></div></li>
-            <li><span class="mono">2014–2024</span><div><h4>Diriger, et faire tenir</h4><p>Huit ans au comité de direction de Projexion, dont le chiffre d'affaires passe de 1,2 à 5,5&nbsp;M€ sans levée, avec 33&nbsp;% de marge. Puis Klareo, et une levée de 3&nbsp;M€. Puis Willing, retourné en cinq mois&nbsp;: la marge passe de −45&nbsp;% à +35&nbsp;%, le chiffre d'affaires de 1 à 1,6&nbsp;M€.</p></div></li>
-            <li><span class="mono">2024–2025</span><div><h4>Entreprendre</h4><p>Il cofonde groove, cabinet de conseil en transformation&nbsp;: cinq clients en huit mois, dont Electro Dépôt, Engie et Kiloutou.</p></div></li>
-            <li><span class="mono">2026</span><div><h4>Paradiddle</h4><p>Tout ce qui précède, au service de vos projets.</p></div></li>
-          </ol>
-        </div>
       </div>
     </section>
   </div>
