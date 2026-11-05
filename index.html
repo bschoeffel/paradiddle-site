@@ -261,6 +261,18 @@ nav a:hover { color: var(--accent-ink); }
 
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .rules sup { font-size: .55em; line-height: 0; vertical-align: super; }
+
+/* Liens projets avec icône */
+.proj { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; white-space: nowrap; }
+.proj img { width: 24px; height: 24px; border-radius: 6px; flex: none; }
+.proj:hover { color: var(--accent-ink); }
+/* Encart références, même principe que les mentions légales */
+.refs-box { margin-top: 40px; }
+.refs-box summary { cursor: pointer; font: 500 13px var(--mono); }
+.refs-box img { display: block; width: 100%; height: auto; margin-top: 18px; border: 0.5px solid #E4E4E0; }
+
+.index td.n .why { display: block; }
+.index td.n .what { display: block; margin-top: 4px; font-size: 14px; color: var(--muted); }
 </style>
 <script>
 try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('pd-intro') && Element.prototype.animate) { document.documentElement.classList.add('pd-intro'); } } catch (e) {}
@@ -351,8 +363,8 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
         <table class="index">
           <thead><tr><th scope="col">Projet</th><th scope="col">Nature</th><th scope="col">Étapes</th></tr></thead>
           <tbody>
-            <tr><td class="p">Mes Proches</td><td class="n">App iOS · par nous</td><td class="st" aria-label="Étapes 01, 03"><i class="on">01</i><i>02</i><i class="on">03</i></td></tr>
-            <tr><td class="p">Maison Saint O'</td><td class="n">Structuration du projet avec l'un des associés, puis création du site web · pour vous</td><td class="st" aria-label="Étapes 01, 03"><i class="on">01</i><i>02</i><i class="on">03</i></td></tr>
+            <tr><td class="p"><a class="proj" href="https://mesproches.app" target="_blank" rel="noopener"><img src="assets/projets/mesproches.png" alt="" width="24" height="24">Mes Proches<span aria-hidden="true">&nbsp;↗</span></a></td><td class="n"><span class="why">Ne plus jamais oublier l'anniversaire ou la fête d'un proche.</span><span class="what">App iOS · par nous</span></td><td class="st" aria-label="Étapes 01, 02, 03"><i class="on">01</i><i class="on">02</i><i class="on">03</i></td></tr>
+            <tr><td class="p"><a class="proj" href="https://maisonsainto.com" target="_blank" rel="noopener"><img src="assets/projets/maisonsainto.svg" alt="" width="24" height="24">Maison Saint O'<span aria-hidden="true">&nbsp;↗</span></a></td><td class="n"><span class="why">Un lieu près de Tournai pour prendre du recul&nbsp;: séminaires, stages, tournages.</span><span class="what">Structuration du projet avec l'un des associés, puis création du site web · pour vous</span></td><td class="st" aria-label="Étapes 01, 03"><i class="on">01</i><i>02</i><i class="on">03</i></td></tr>
           </tbody>
         </table>
       </div>
@@ -366,7 +378,10 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
           <p>Il aborde chaque projet comme un musicien&nbsp;: de la rigueur, de l'écoute, et l'envie de faire sonner le collectif. Paradiddle en est la somme.</p>
         </div>
         <p class="sign"><b>Benoît Schoeffel</b><span class="mono">Fondateur</span><a class="li-pill" href="https://www.linkedin.com/in/bschoeffel/" target="_blank" rel="noopener" aria-label="Profil LinkedIn de Benoît Schoeffel (nouvel onglet)">LinkedIn&nbsp;↗</a></p>
-        <p class="refs"><span class="mono">Ils lui ont fait confiance</span>Leroy Merlin, Decathlon, Boulanger, E.Leclerc, Auchan, AXA, Caisse d'Épargne, Cofidis, Bonduelle, Roquette, La Redoute, Kiabi, Boralex…</p>
+        <details class="refs-box">
+          <summary>20 ans d'expertise multisectorielle</summary>
+          <img src="assets/references.jpg" width="1744" height="948" loading="lazy" alt="Références par secteur. Sport : FIFA World Cup 2010, Vancouver 2010, Rugby World Cup 2007. Retail : Leroy Merlin, Kingfisher, Boulanger, Chronodrive, E.Leclerc, Auchan, Decathlon, Electro Dépôt. Énergie : Boralex. Logiciel : Klareo. Assurance et santé : AXA, Cardif, Gan. Industrie : Paul, Bonduelle, Roquette. Banque : Caisse d'Épargne, Cofidis. Mode : La Redoute, Vertbaudet, Jules, Kiabi. Non lucratif : Commission canadienne du tourisme. Publicité, conseil et agence : Accenture, Tribal DDB, Willing, Projexion.">
+        </details>
       </div>
     </section>
   </div>
