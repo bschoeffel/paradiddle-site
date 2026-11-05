@@ -202,11 +202,12 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 
 
 
-/* Intro : la balle pose les 8 frappes, puis le texte apparaît */
+/* Intro : la promesse d'abord, puis la balle pose les 8 frappes, puis l'explication */
 .hits { position: relative; }
 .pd-ball { position: absolute; left: 0; top: 0; border-radius: 50%; background: var(--accent); z-index: 2; pointer-events: none; will-change: transform; }
 html.pd-intro .hits .hit { transform: scale(0); opacity: 0; }
 html.pd-intro .hero h1 > span, html.pd-intro .hero .lede, html.pd-intro .hits-explain { opacity: 0; transform: translateY(18px); }
+html.pd-intro.pd-hero-in .hero h1 > span, html.pd-intro.pd-hero-in .hero .lede { opacity: 1; transform: none; }
 .hero h1 > span, .hero .lede, .hits-explain { transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
 
 /* Filets affinés */
@@ -445,7 +446,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   var row = document.querySelector('.hits');
   if (!row) return;
   var hits = row.querySelectorAll('.hit');
-  var texts = [].slice.call(document.querySelectorAll('.hero h1 > span, .hero .lede, .hits-explain'));
+  var texts = [].slice.call(document.querySelectorAll('.hero h1 > span, .hero .lede'));
   var acc = [0, 4], busy = false;
   var actx = null, seqLR = 'RLRRLRLL';
   function audio() {
@@ -473,7 +474,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   function reveal() {
     if (!root.classList.contains('pd-intro')) return;
     root.classList.remove('pd-intro');
-    texts.forEach(function (t, i) { t.style.transitionDelay = (i * 0.18) + 's'; });
+    root.classList.remove('pd-hero-in');
     [].forEach.call(hits, function (h) { h.style.opacity = ''; });
     setTimeout(function () { texts.forEach(function (t) { t.style.transitionDelay = ''; }); }, 2000);
   }
@@ -525,7 +526,10 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
 
   if (root.classList.contains('pd-intro')) {
     try { sessionStorage.setItem('pd-intro', '1'); } catch (e) {}
-    play(true);
+    // 1. la promesse apparaît, 2. la balle pose les 8 frappes, 3. l'explication suit
+    texts.forEach(function (t, i) { t.style.transitionDelay = (i * 0.22) + 's'; });
+    requestAnimationFrame(function () { requestAnimationFrame(function () { root.classList.add('pd-hero-in'); }); });
+    setTimeout(function () { play(true); }, canAnimate ? 1500 : 0);
   }
   if (canAnimate) {
     row.setAttribute('tabindex', '0');
