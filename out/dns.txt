@@ -1,34 +1,7 @@
-== DNS www
-bschoeffel.github.io.
-bschoeffel.github.io.
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-== DNS apex
-185.199.108.153
-185.199.109.153
-185.199.110.153
-185.199.111.153
-== http://www
-HTTP/1.1 301 Moved Permanently
-Connection: keep-alive
-Content-Length: 162
-Server: GitHub.com
-Content-Type: text/html
-== https://www
-HTTP/2 301 
-server: GitHub.com
-content-type: text/html
-location: https://paradiddle.fr/
-x-github-request-id: 63FC:20F325:B8E66:CB535:6AEC718A
-== http://apex
-HTTP/1.1 301 Moved Permanently
-Connection: keep-alive
-Content-Length: 162
-Server: GitHub.com
-Content-Type: text/html
-== https://apex
-HTTP/2 200 
-server: GitHub.com
-content-type: text/html; charset=utf-8
+== TXT (resolveur public)
+"v=spf1 include:mx.ovh.com include:_spf.google.com ~all"
+== TXT (serveurs OVH)
+-- ns103.ovh.net.
+"v=spf1 include:mx.ovh.com include:_spf.google.com ~all"
+-- dns103.ovh.net.
+"v=spf1 include:mx.ovh.com include:_spf.google.com ~all"
