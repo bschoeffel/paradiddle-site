@@ -12,12 +12,8 @@ jobs:
       - run: |
           mkdir -p out
           {
-          echo "== DNS www"; dig +short www.paradiddle.fr CNAME; dig +short www.paradiddle.fr A
-          echo "== DNS apex"; dig +short paradiddle.fr A
-          echo "== http://www"; curl -sI http://www.paradiddle.fr | head -5
-          echo "== https://www"; curl -sI https://www.paradiddle.fr 2>&1 | head -5
-          echo "== http://apex"; curl -sI http://paradiddle.fr | head -5
-          echo "== https://apex"; curl -sI https://paradiddle.fr | head -3
+          echo "== TXT (resolveur public)"; dig +short TXT paradiddle.fr @8.8.8.8
+          echo "== TXT (serveurs OVH)"; for ns in $(dig +short NS paradiddle.fr); do echo "-- $ns"; dig +short TXT paradiddle.fr @$ns; done
           } > out/dns.txt 2>&1
           git config user.name "github-actions" && git config user.email "actions@github.com"
           git add out && git commit -m "Vérif DNS [skip ci]" && git push
