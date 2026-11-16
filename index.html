@@ -213,6 +213,9 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 
 
 .hero .kicker { margin: 0 0 14px; font: 600 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+/* Sections sans numéro : alignées à gauche comme l'ouverture */
+.s-head { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; }
+.s-body { margin-left: 0 !important; }
 /* Ouverture par le fondateur */
 .opener { padding: clamp(56px, 9vw, 112px) 0 clamp(40px, 6vw, 72px); }
 .opener .kicker { margin: 0 0 18px; font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
@@ -412,7 +415,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     </section>
 
     <section class="s" id="principes" aria-labelledby="principes-title">
-      <div class="s-head"><span class="mono num">01</span><h2 id="principes-title">Principes</h2></div>
+      <div class="s-head"><h2 id="principes-title">Principes</h2></div>
       <div class="s-body">
         <ol class="rules">
           <li>Tout commence par un échange.</li>
@@ -425,7 +428,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     </section>
 
     <section class="s" id="index" aria-labelledby="index-title">
-      <div class="s-head"><span class="mono num">02</span><h2 id="index-title">Projets</h2></div>
+      <div class="s-head"><h2 id="index-title">Projets</h2></div>
       <div class="s-body">
         <ul class="works">
           <li class="work">
@@ -453,7 +456,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
-      <p class="mono">03 · Contact</p>
+      <p class="mono">Contact</p>
       <h2 id="contact-title">Un projet ? Parlons-en.</h2>
       <a class="mail" href="mailto:benoit.schoeffel@paradiddle.fr">benoit.schoeffel@paradiddle.fr</a>
       <p class="tel"><a href="tel:+33622705021">06 22 70 50 21</a></p>
