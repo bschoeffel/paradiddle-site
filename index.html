@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Paradiddle · Studio de projets</title>
-<meta name="description" content="Paradiddle, studio de projets. Créatif et touche-à-tout, de l'idée à la réalisation. Fondé à Lille par Benoît Schoeffel.">
+<meta name="description" content="Paradiddle, studio de projets : conception, investissement, réalisation. Quoi vendre, à qui, à quel prix ? Faut-il investir ? Comment le faire tourner ? Fondé à Lille par Benoît Schoeffel.">
 <meta property="og:title" content="Paradiddle · Studio de projets">
 <meta property="og:description" content="Paradiddle, studio de projets. Créatif et touche-à-tout, de l'idée à la réalisation. Fondé à Lille par Benoît Schoeffel.">
 <meta property="og:type" content="website">
@@ -213,6 +213,16 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 
 
 .hero .kicker { margin: 0 0 14px; font: 600 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+/* Ouverture : les trois questions, sans titre */
+.opening { padding: clamp(48px, 9vw, 112px) 0 clamp(56px, 8vw, 96px); }
+.qs { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(28px, 4vw, 48px); }
+.qs li { display: grid; gap: 8px; }
+.qs .tag { margin: 0; display: flex; align-items: center; gap: 10px; font: 600 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
+.qs .tag::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
+.qs .q { margin: 0; font-size: clamp(34px, 6vw, 76px); line-height: 1.02; font-weight: 800; letter-spacing: -0.035em; text-wrap: balance; }
+.qs .q em { font-style: normal; color: var(--accent); }
+.qs .d { margin: 4px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 70ch; }
+.opening .modes { margin-top: clamp(36px, 5vw, 56px); padding-top: 20px; border-top: .5px solid #555; }
 /* Accroche rythmée : les mots s'allument sur les accents, la balle devient le point final */
 .hero .dot { display: inline-block; width: .19em; height: .19em; border-radius: 50%; background: var(--accent); margin-left: .05em; vertical-align: baseline; }
 .hero .w { transition: color .35s ease; }
@@ -338,43 +348,19 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
 </header>
 
 <main id="top">
-  <div class="hero-band">
   <div class="wrap">
-    <section class="hero" aria-labelledby="hero-title">
-      <p class="kicker">Studio de projets</p>
-      <h1 id="hero-title" class="manifesto">
-        <span class="m1"><span class="w">Créatif</span> et <span class="w">touche‑à‑tout</span>, de l'idée à la <em class="w">réalisation</em><span class="dot" aria-hidden="true"></span><span class="sr">.</span></span>
-      </h1>
-      <p class="lede">Fondé à Lille par Benoît Schoeffel.</p>
-    </section>
-  </div>
-  </div>
-  <div class="wrap">
-
-    <div class="hits" role="img" aria-label="Le paradiddle : droite, gauche, droite, droite, gauche, droite, gauche, gauche.">
-      <span class="hit on">R</span><span class="hit">L</span><span class="hit">R</span><span class="hit">R</span><span class="hit on">L</span><span class="hit">R</span><span class="hit">L</span><span class="hit">L</span>
-    </div>
-    <p class="hits-explain"><b>Un paradiddle</b>, c'est le premier exercice de batterie. Main droite&nbsp;: concevoir. Main gauche&nbsp;: fabriquer.</p>
-  </div>
-
-  <div class="wrap">
-    <section class="s" id="studio" aria-labelledby="studio-title" style="margin-top: 64px;">
-      <div class="s-head"><span class="mono num">01</span><h2 id="studio-title">Expertises</h2></div>
-      <div class="s-body">
-        <div class="flow" data-step="0">
-          <div class="flow-line" aria-hidden="true"><i></i><i></i><i></i><b class="flow-ball"></b></div>
-          <ol class="flow-steps">
-            <li><span class="mono">01</span><h3>Idée et business model</h3><p class="q">Quoi vendre, à qui, à quel prix&nbsp;?</p><p class="d">Thèse et opportunité · Modèle économique · Prix · Positionnement et offre · Naming et marque · Go-to-market</p></li>
-            <li><span class="mono">02</span><h3>Investissement</h3><p class="q">Faut-il investir, et combien&nbsp;?</p><p class="d">Business plan · Valorisation · Levée de fonds · Due diligence · M&amp;A</p></li>
-            <li><span class="mono">03</span><h3>Réalisation</h3><p class="q">Comment le faire tourner&nbsp;?</p><p class="d">Développement commercial · Organisation et opérations · Apps et outils · Lieux · Lancement · Pilotage et marges</p></li>
-          </ol>
-        </div>
-        <p class="modes"><b>Pour vous</b>, au projet <span aria-hidden="true">·</span> <b>Avec vous</b>, en operating partner <span aria-hidden="true">·</span> <b>Par nous</b>, sur nos propres projets.</p>
-      </div>
+    <section class="opening" id="studio" aria-labelledby="opening-title">
+      <h1 id="opening-title" class="sr">Paradiddle, studio de projets&nbsp;: conception, investissement, réalisation.</h1>
+      <ol class="qs">
+        <li><p class="tag">Conception</p><p class="q">Quoi vendre, à qui, à quel prix&nbsp;?</p><p class="d">Thèse et opportunité · Modèle économique · Prix · Positionnement et offre · Naming et marque · Go-to-market</p></li>
+        <li><p class="tag">Investissement</p><p class="q">Faut-il investir, et combien&nbsp;?</p><p class="d">Business plan · Valorisation · Levée de fonds · Due diligence · M&amp;A</p></li>
+        <li><p class="tag">Réalisation</p><p class="q">Comment le faire <em>tourner</em>&nbsp;?</p><p class="d">Développement commercial · Organisation et opérations · Apps et outils · Lieux · Lancement · Pilotage et marges</p></li>
+      </ol>
+      <p class="modes"><b>Pour vous</b>, au projet <span aria-hidden="true">·</span> <b>Avec vous</b>, en operating partner <span aria-hidden="true">·</span> <b>Par nous</b>, sur nos propres projets.</p>
     </section>
 
     <section class="s" id="principes" aria-labelledby="principes-title">
-      <div class="s-head"><span class="mono num">02</span><h2 id="principes-title">Principes</h2></div>
+      <div class="s-head"><span class="mono num">01</span><h2 id="principes-title">Principes</h2></div>
       <div class="s-body">
         <ol class="rules">
           <li>Le goût n'est pas une question de moyens.</li>
@@ -386,7 +372,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     </section>
 
     <section class="s" id="index" aria-labelledby="index-title">
-      <div class="s-head"><span class="mono num">03</span><h2 id="index-title">Projets</h2></div>
+      <div class="s-head"><span class="mono num">02</span><h2 id="index-title">Projets</h2></div>
       <div class="s-body">
         <ul class="works">
           <li class="work">
@@ -414,7 +400,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     </section>
 
     <section class="s" id="fondateur" aria-labelledby="fondateur-title">
-      <div class="s-head"><span class="mono num">04</span><h2 id="fondateur-title">Le fondateur</h2></div>
+      <div class="s-head"><span class="mono num">03</span><h2 id="fondateur-title">Le fondateur</h2></div>
       <div class="s-body">
         <div class="letter">
           <p>Après vingt ans dans l'événementiel mondial, la publicité, le conseil et la direction d'entreprises, Benoît Schoeffel aborde chaque projet comme un musicien&nbsp;: de la rigueur, de l'écoute, et l'envie de faire sonner le collectif.</p>
@@ -438,7 +424,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
 
   <section class="contact" id="contact" aria-labelledby="contact-title">
     <div class="wrap">
-      <p class="mono">05 · Contact</p>
+      <p class="mono">04 · Contact</p>
       <h2 id="contact-title">Un projet ? Parlons-en.</h2>
       <p>Un premier échange de 30 minutes suffit pour savoir si nous jouons ensemble.</p>
       <a class="mail" href="mailto:benoit.schoeffel@paradiddle.fr">benoit.schoeffel@paradiddle.fr</a>
