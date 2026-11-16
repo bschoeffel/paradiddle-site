@@ -212,6 +212,11 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 
 
 
+/* Accroche rythmée : les mots s'allument sur les accents, la balle devient le point final */
+.hero .dot { display: inline-block; width: .19em; height: .19em; border-radius: 50%; background: var(--accent); margin-left: .05em; vertical-align: baseline; }
+.hero .w { transition: color .35s ease; }
+html.pd-intro .hero .w:not(.lit) { color: #D4D4CF; }
+html.pd-intro .hero .dot { opacity: 0; }
 /* Intro : la promesse d'abord, puis la balle pose les 8 frappes, puis l'explication */
 .hits { position: relative; }
 .pd-ball { position: absolute; left: 0; top: 0; border-radius: 50%; background: var(--accent); z-index: 2; pointer-events: none; will-change: transform; }
@@ -336,7 +341,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   <div class="wrap">
     <section class="hero" aria-labelledby="hero-title">
       <h1 id="hero-title" class="manifesto">
-        <span class="m1">Studio de projets&nbsp;: conception, investissement, <em>réalisation</em>.</span>
+        <span class="m1">Studio de projets&nbsp;: <span class="w">conception</span>, <span class="w">investissement</span>, <em class="w">réalisation</em><span class="dot" aria-hidden="true"></span><span class="sr">.</span></span>
       </h1>
       <p class="lede">Fondé à Lille par Benoît Schoeffel.</p>
     </section>
@@ -512,11 +517,15 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     var ball = document.createElement('b'); ball.className = 'pd-ball'; ball.style.width = ball.style.height = B + 'px';
     row.appendChild(ball);
     var ground = hits[0].offsetTop - B + 2;
+    var words = document.querySelectorAll('.hero .w'), dot = document.querySelector('.hero .dot');
+    var lightAt = { 0: 0, 4: 1, 7: 2 };
+    if (dot) dot.style.opacity = '0';
     function cx(i) { return hits[i].offsetLeft + D / 2 - B / 2; }
     function at(x, y, sx, sy) { return 'translate(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px) scale(' + (sx || 1) + ',' + (sy || 1) + ')'; }
     function land(i) {
       var h = hits[i], big = acc.indexOf(i) > -1;
       snare(i);
+      if (intro && lightAt[i] !== undefined && words[lightAt[i]]) words[lightAt[i]].classList.add('lit');
       if (intro) {
         h.style.opacity = '1';
         h.animate([{ transform: 'scale(0)' }, { transform: big ? 'scale(1.18,.78)' : 'scale(1.1,.86)', offset: .55 }, { transform: 'scale(1)' }], { duration: big ? 420 : 340, easing: 'cubic-bezier(.3,1.4,.5,1)', fill: 'forwards' });
@@ -534,7 +543,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
       }
       return ball.animate(kf, { duration: dur, easing: 'linear', fill: 'forwards' }).finished;
     }
-    function end() { ball.remove(); busy = false; reveal(); }
+    function end() { ball.remove(); if (dot) dot.style.opacity = ''; busy = false; reveal(); }
     var p = jump(cx(0) - D * 1.2, ground - D * 3.2, cx(0), 0, 650, true).then(function () { return land(0); });
     for (var i = 1; i < 8; i++) {
       (function (i) {
@@ -545,9 +554,22 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
       })(i);
     }
     p.then(function () {
-      return ball.animate([{ transform: at(cx(7), ground) }, { transform: at(cx(7) + D * 1.6, ground - D * 2.4, .3, .3), opacity: 0 }], { duration: 480, easing: 'ease-out', fill: 'forwards' }).finished;
+      if (!dot) return ball.animate([{ transform: at(cx(7), ground) }, { transform: at(cx(7) + D * 1.6, ground - D * 2.4, .3, .3), opacity: 0 }], { duration: 480, easing: 'ease-out', fill: 'forwards' }).finished;
+      // la balle remonte et devient le point final
+      var rr = row.getBoundingClientRect(), dr = dot.getBoundingClientRect();
+      var tx = dr.left - rr.left + dr.width / 2 - B / 2, ty = dr.top - rr.top + dr.height / 2 - B / 2, sc = Math.max(dr.width / B, .1);
+      var x0 = cx(7), y0 = ground, H = Math.max(D * 0.9, 60), kf = [];
+      for (var k = 0; k <= 24; k++) {
+        var t = k / 24, e = t * t * (3 - 2 * t);
+        kf.push({ transform: at(x0 + (tx - x0) * e, y0 + (ty - y0) * e - H * 4 * t * (1 - t), 1 + (sc - 1) * Math.pow(t, 3), 1 + (sc - 1) * Math.pow(t, 3)) });
+      }
+      return ball.animate(kf, { duration: 900, easing: 'linear', fill: 'forwards' }).finished.then(function () {
+        dot.style.opacity = '';
+        ball.style.visibility = 'hidden';
+        return dot.animate([{ transform: 'translateY(0) scale(1.5,.6)' }, { transform: 'translateY(-.25em)', offset: .45 }, { transform: 'translateY(0) scale(1)' }], { duration: 420, easing: 'ease-out' }).finished;
+      });
     }).then(end, end);
-    setTimeout(function () { if (busy) end(); }, 9000);
+    setTimeout(function () { if (busy) end(); }, 12000);
   }
 
   if (root.classList.contains('pd-intro')) {
