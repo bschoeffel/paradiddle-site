@@ -213,16 +213,17 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 
 
 .hero .kicker { margin: 0 0 14px; font: 600 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
-/* Ouverture : les trois questions, sans titre */
-.opening { padding: clamp(48px, 9vw, 112px) 0 clamp(56px, 8vw, 96px); }
-.qs { list-style: none; margin: 0; padding: 0; display: grid; gap: clamp(28px, 4vw, 48px); }
-.qs li { display: grid; gap: 8px; }
-.qs .tag { margin: 0; display: flex; align-items: center; gap: 10px; font: 600 13px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-ink); }
-.qs .tag::before { content: ""; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); flex: none; }
-.qs .q { margin: 0; font-size: clamp(34px, 6vw, 76px); line-height: 1.02; font-weight: 800; letter-spacing: -0.035em; text-wrap: balance; }
+/* Ouverture : les trois questions, sans titre — version fine */
+.opening { padding: clamp(56px, 10vw, 128px) 0 clamp(48px, 7vw, 88px); }
+.qs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
+.qs li { display: grid; align-content: start; gap: 14px; padding-top: 18px; border-top: .5px solid #555; }
+.qs .tag { margin: 0; display: flex; align-items: center; gap: 8px; font: 500 11px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+.qs .tag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); flex: none; }
+.qs .q { margin: 0; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; font-weight: 500; letter-spacing: -0.02em; text-wrap: balance; }
 .qs .q em { font-style: normal; color: var(--accent); }
-.qs .d { margin: 4px 0 0; font-size: 15px; line-height: 1.5; color: var(--muted); max-width: 70ch; }
-.opening .modes { margin-top: clamp(36px, 5vw, 56px); padding-top: 20px; border-top: .5px solid #555; }
+.qs .d { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
+.opening .modes { margin-top: clamp(40px, 6vw, 72px); font-size: 15px; }
+@media (max-width: 760px) { .qs { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
 /* Accroche rythmée : les mots s'allument sur les accents, la balle devient le point final */
 .hero .dot { display: inline-block; width: .19em; height: .19em; border-radius: 50%; background: var(--accent); margin-left: .05em; vertical-align: baseline; }
 .hero .w { transition: color .35s ease; }
