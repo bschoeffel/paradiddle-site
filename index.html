@@ -98,7 +98,7 @@ section.s { border-top: 1.5px solid var(--ink); padding: 28px 0 88px; }
 .rules { list-style: none; padding: 0; counter-reset: r; }
 .rules li { counter-increment: r; display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 16px; padding: 14px 0; border-top: 1px solid var(--line); font-size: clamp(22px, 2.6vw, 30px); line-height: 1.2; font-weight: 700; letter-spacing: -0.02em; }
 @media (max-width: 620px) { .rules li { grid-template-columns: 34px minmax(0, 1fr); gap: 8px; } }
-.rules li::before { content: counter(r, decimal-leading-zero); font: 600 14px var(--mono); color: var(--accent-ink); padding-top: .55em; }
+.rules li::before { content: counter(r, decimal-leading-zero); font: 600 14px var(--mono); color: var(--muted); padding-top: .55em; }
 
 /* 04 Index */
 .index { width: 100%; border-collapse: collapse; font-size: 16px; }
@@ -217,7 +217,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .s-head { grid-template-columns: minmax(0, 1fr) !important; gap: 0 !important; }
 .s-body { margin-left: 0 !important; }
 /* Ouverture par le fondateur */
-.opener { padding: clamp(56px, 9vw, 112px) 0 clamp(40px, 6vw, 72px); }
+.opener { padding: clamp(56px, 9vw, 112px) 0 88px; }
 .opener .kicker { margin: 0 0 18px; font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .opener h1 { margin: 0; font-size: clamp(34px, 5.4vw, 68px); line-height: 1.05; font-weight: 800; letter-spacing: -0.035em; max-width: 14em; text-wrap: balance; }
 .opener h1 em { font-style: normal; color: var(--accent); }
@@ -229,7 +229,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .me-name span { font: 500 11px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
 .me .xp { margin-top: 6px; }
 @media (max-width: 560px) { .me { grid-template-columns: minmax(0, 1fr); } .me img { width: 80px; height: 80px; } }
-.opening .lead { margin: 0 0 28px; font-size: clamp(20px, 2vw, 24px); font-weight: 700; letter-spacing: -0.015em; }
+.opening .lead { margin: -16px 0 32px; font-size: clamp(19px, 1.8vw, 22px); line-height: 1.45; color: var(--muted); max-width: 46ch; }
 /* Animation dans l'ouverture */
 .opener .dot { display: inline-block; width: .19em; height: .19em; border-radius: 50%; background: var(--accent); margin-left: .05em; vertical-align: baseline; }
 .opener .w { transition: color .35s ease; }
@@ -241,7 +241,7 @@ html.pd-intro.pd-hero-in .opener h1 > span { opacity: 1; transform: none; }
 .opener .hits { margin-top: clamp(28px, 4vw, 44px); padding-top: 0; max-width: 520px; gap: clamp(6px, 1vw, 12px); }
 .opener .hit { border-width: 2px; font-size: clamp(11px, 1.2vw, 15px); }
 /* Ouverture : les trois questions, sans titre — version fine */
-.opening { padding: clamp(32px, 4vw, 48px) 0 clamp(48px, 7vw, 88px); border-top: .5px solid #555; }
+.opening { padding: 28px 0 88px; border-top: .5px solid #555; }
 .qs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
 .qs li { display: grid; align-content: start; gap: 14px; padding-top: 18px; border-top: .5px solid #555; }
 .qs .tag { margin: 0; display: flex; align-items: center; gap: 8px; font: 500 11px var(--mono); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
@@ -249,7 +249,7 @@ html.pd-intro.pd-hero-in .opener h1 > span { opacity: 1; transform: none; }
 .qs .q { margin: 0; font-size: clamp(24px, 2.6vw, 34px); line-height: 1.15; font-weight: 500; letter-spacing: -0.02em; text-wrap: balance; }
 .qs .q em { font-style: normal; color: var(--accent); }
 .qs .d { margin: 0; font-size: 14px; line-height: 1.55; color: var(--muted); }
-.opening .modes { margin-top: clamp(40px, 6vw, 72px); font-size: 15px; }
+.opening .modes { margin-top: 48px; font-size: clamp(16px, 1.5vw, 18px); }
 @media (max-width: 760px) { .qs { grid-template-columns: minmax(0, 1fr); gap: 32px; } }
 /* Accroche rythmée : les mots s'allument sur les accents, la balle devient le point final */
 .hero .dot { display: inline-block; width: .19em; height: .19em; border-radius: 50%; background: var(--accent); margin-left: .05em; vertical-align: baseline; }
@@ -321,12 +321,14 @@ nav a:hover { color: var(--accent-ink); }
 .rules sup { font-size: .55em; line-height: 0; vertical-align: super; }
 
 /* Liens projets avec icône */
-.works { list-style: none; margin: 0; padding: 0; display: grid; gap: 32px; max-width: 62ch; }
-.work { padding-bottom: 32px; border-bottom: .5px solid #E8E8E4; }
-.work h3 { margin: 0; font-size: 22px; font-weight: 700; }
+.works { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px clamp(24px, 4vw, 56px); }
+@media (max-width: 760px) { .works { grid-template-columns: minmax(0, 1fr); } }
+.work { padding-top: 20px; border-top: .5px solid #555; }
+.work h3 { margin: 0; font-size: 22px; font-weight: 700; display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.work .kind { font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .work .why { margin: 10px 0 0; font-size: 17px; }
 .work .what { margin: 6px 0 0; font: 500 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.work .lbl { margin: 22px 0 8px; font: 600 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent-ink); }
+.work .lbl { margin: 22px 0 8px; font: 600 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
 .tags { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
 .tags li { font-size: 14px; padding: 3px 10px; border: .5px solid #555; border-radius: 999px; }
 .work .st { margin: 18px 0 0; display: flex; align-items: center; gap: 0; }
@@ -405,7 +407,8 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     </section>
 
     <section class="opening" id="studio" aria-labelledby="studio-title">
-      <h2 id="studio-title" class="lead">Curieux et touche‑à‑tout, j'interviens de l'idée à la réalisation.</h2>
+      <div class="s-head"><h2 id="studio-title">Expertises</h2></div>
+      <p class="lead">Curieux et touche‑à‑tout, j'interviens de l'idée à la réalisation.</p>
       <ol class="qs">
         <li><p class="tag">Conception</p><p class="q">Quoi vendre, à qui, à quel prix&nbsp;?</p><p class="d">Thèse et opportunité · Modèle économique · Prix · Positionnement et offre · Naming et marque · Go-to-market</p></li>
         <li><p class="tag">Investissement</p><p class="q">Faut-il investir, et combien&nbsp;?</p><p class="d">Business plan · Valorisation · Levée de fonds · Due diligence · M&amp;A</p></li>
@@ -433,18 +436,16 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
         <ul class="works">
           <li class="work">
             <div class="work-txt">
-              <h3><a class="proj" href="https://mesproches.app" target="_blank" rel="noopener"><img src="assets/projets/mesproches.png" alt="" width="24" height="24">Mes Proches<span aria-hidden="true">&nbsp;↗</span></a></h3>
+              <h3><a class="proj" href="https://mesproches.app" target="_blank" rel="noopener"><img src="assets/projets/mesproches.png" alt="" width="24" height="24">Mes Proches<span aria-hidden="true">&nbsp;↗</span></a><span class="kind">App iOS · par nous</span></h3>
               <p class="why">Prendre soin de ceux qui comptent vraiment.</p>
-              <p class="what">App iOS · par nous</p>
               <p class="lbl">Notre intervention</p>
               <ul class="tags"><li>Analyse de marché</li><li>Business model</li><li>Prototypage</li><li>UX et direction artistique</li><li>Développement</li></ul>
             </div>
           </li>
           <li class="work">
             <div class="work-txt">
-              <h3><a class="proj" href="https://maisonsainto.com" target="_blank" rel="noopener"><img src="assets/projets/maisonsainto.svg" alt="" width="24" height="24">Maison Saint O'<span aria-hidden="true">&nbsp;↗</span></a></h3>
+              <h3><a class="proj" href="https://maisonsainto.com" target="_blank" rel="noopener"><img src="assets/projets/maisonsainto.svg" alt="" width="24" height="24">Maison Saint O'<span aria-hidden="true">&nbsp;↗</span></a><span class="kind">Lieu · pour vous</span></h3>
               <p class="why">Un lieu près de Tournai pour prendre du recul&nbsp;: séminaires, stages, tournages. Projet structuré aux côtés de l'un des associés.</p>
-              <p class="what">Lieu · pour vous</p>
               <p class="lbl">Notre intervention</p>
               <ul class="tags"><li>Offre de service</li><li>Charte graphique</li><li>Développement du site</li></ul>
             </div>
