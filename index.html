@@ -227,6 +227,15 @@ footer .wrap { display: flex; justify-content: space-between; align-items: end; 
 .me .xp { margin-top: 6px; }
 @media (max-width: 560px) { .me { grid-template-columns: minmax(0, 1fr); } .me img { width: 80px; height: 80px; } }
 .opening .lead { margin: 0 0 28px; font-size: clamp(20px, 2vw, 24px); font-weight: 700; letter-spacing: -0.015em; }
+/* Animation dans l'ouverture */
+.opener .dot { display: inline-block; width: .19em; height: .19em; border-radius: 50%; background: var(--accent); margin-left: .05em; vertical-align: baseline; }
+.opener .w { transition: color .35s ease; }
+html.pd-intro .opener .w:not(.lit) { color: #D4D4CF; }
+html.pd-intro .opener .dot { opacity: 0; }
+html.pd-intro .opener h1 > span { opacity: 0; transform: translateY(18px); }
+html.pd-intro.pd-hero-in .opener h1 > span { opacity: 1; transform: none; }
+.opener h1 > span { display: inline-block; transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+.opener .hits { margin-top: clamp(28px, 4vw, 44px); padding-top: 0; }
 /* Ouverture : les trois questions, sans titre — version fine */
 .opening { padding: clamp(32px, 4vw, 48px) 0 clamp(48px, 7vw, 88px); border-top: .5px solid #555; }
 .qs { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0 clamp(20px, 3vw, 40px); }
@@ -366,7 +375,10 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   <div class="wrap">
     <section class="opener" aria-labelledby="intro-title">
       <p class="kicker">Paradiddle · Studio de projets · Lille</p>
-      <h1 id="intro-title">Entreprendre, investir, <em>construire</em>.</h1>
+      <h1 id="intro-title"><span class="m1"><span class="w">Entreprendre</span>, <span class="w">investir</span>, <em class="w">construire</em><span class="dot" aria-hidden="true"></span><span class="sr">.</span></span></h1>
+      <div class="hits" role="img" aria-label="Le paradiddle : droite, gauche, droite, droite, gauche, droite, gauche, gauche.">
+        <span class="hit on">R</span><span class="hit">L</span><span class="hit">R</span><span class="hit">R</span><span class="hit on">L</span><span class="hit">R</span><span class="hit">L</span><span class="hit">L</span>
+      </div>
       <div class="me">
         <img src="assets/benoit.jpg" alt="Benoît Schoeffel" width="96" height="96">
         <div class="me-txt">
@@ -481,7 +493,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
   var row = document.querySelector('.hits');
   if (!row) return;
   var hits = row.querySelectorAll('.hit');
-  var texts = [].slice.call(document.querySelectorAll('.hero h1 > span, .hero .lede'));
+  var texts = [].slice.call(document.querySelectorAll('.opener h1 > span'));
   var acc = [0, 4], busy = false;
   var actx = null, seqLR = 'RLRRLRLL';
   function audio() {
@@ -521,7 +533,7 @@ try { if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !ses
     var ball = document.createElement('b'); ball.className = 'pd-ball'; ball.style.width = ball.style.height = B + 'px';
     row.appendChild(ball);
     var ground = hits[0].offsetTop - B + 2;
-    var words = document.querySelectorAll('.hero .w'), dot = document.querySelector('.hero .dot');
+    var words = document.querySelectorAll('.opener .w'), dot = document.querySelector('.opener .dot');
     var lightAt = { 0: 0, 4: 1, 7: 2 };
     if (dot) dot.style.opacity = '0';
     function cx(i) { return hits[i].offsetLeft + D / 2 - B / 2; }
